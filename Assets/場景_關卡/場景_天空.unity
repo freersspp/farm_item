@@ -154,15 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 747906268}
   groundTile: {fileID: 11400000, guid: 91e254b5b3f1f804995481dbfd2109df, type: 2}
-  noiseScale: 0.1
-  heightMultiplier: 1
-  floatingPlatformChance: 0.8
-  minFloatingHeightOffset: 3
-  maxFloatingHeightOffset: 2
-  maxFloatingPlatformLength: 3
-  maxJumpHorizontal: 4
-  maxJumpVertical: 3
-  maxGroundStepHeight: 2
+  mapWidth: 50
+  mapHeight: 4
+  groundHeight: 1
 --- !u!4 &353727607
 Transform:
   m_ObjectHideFlags: 0

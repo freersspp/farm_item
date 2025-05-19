@@ -1,103 +1,53 @@
 ﻿using UnityEngine;
-using UnityEngine.Tilemaps;
+using UnityEngine.Tilemaps; // 引入 Tilemap 所需的命名空間
 
 public class RandomMapGenerator : MonoBehaviour
 {
-    [Header("Tilemap 和地磚設定")]
+    // 欲操作的 Tilemap（從場景中拖進來）
     public Tilemap groundTilemap;
+
+    // 地面所使用的 Tile，可以是 RuleTile 或普通 Tile
     public TileBase groundTile;
 
-    [Header("Perlin Noise 參數")]
-    public float noiseScale = 0.15f;
-    public float heightMultiplier = 4f;
-    private float noiseOffset;
+    // 地圖的寬度（水平格數）
+    public int mapWidth = 50;
 
-    [Header("浮空平台設定")]
-    public float floatingPlatformChance = 0.3f;
-    public int minFloatingHeightOffset = 2;
-    public int maxFloatingHeightOffset = 3;
-    public int maxFloatingPlatformLength = 3;
+    // 地圖的總高度（最大 Y 值）
+    public int mapHeight = 6;
 
-    [Header("跳躍限制")]
-    public int maxJumpHorizontal = 4;
-    public int maxJumpVertical = 3;
+    // 預設的地面高度
+    public int groundHeight = 1;
 
-    [Header("地形連續限制")]
-    public int maxGroundStepHeight = 1;
-
+    // 遊戲開始時自動呼叫，用來生成地圖
     void Start()
     {
-        GeneratePerlinMapWithFloatingPlatforms();
+        GenerateRandomMap();
     }
 
-    void GeneratePerlinMapWithFloatingPlatforms()
+    // 地圖生成邏輯
+    void GenerateRandomMap()
     {
+        // 清空之前的地圖（避免重新播放時殘留）
         groundTilemap.ClearAllTiles();
 
-        noiseOffset = Random.Range(0f, 1000f);
+        // 記錄目前高度，用來讓地形有起伏
+        int currentHeight = groundHeight;
 
-        int startX = -5;
-        int endX = 25;
-        int lastGroundHeight = 0;
-
-        int lastPlatformX = -999;
-        int lastPlatformY = -999;
-
-        for (int x = startX; x <= endX; x++)
+        // 從左到右依序放置地塊
+        for (int x = 0; x < mapWidth; x++)
         {
-            // 使用 Perlin Noise 取得 Y 值高度
-            float perlinValue = Mathf.PerlinNoise((x + 1000) * noiseScale, noiseOffset);
-            int tileHeight = Mathf.FloorToInt((perlinValue - 0.3f) * heightMultiplier);
-            tileHeight = Mathf.Clamp(tileHeight, -5, 5);
+            // 每一格橫向都有機會微幅上升或下降（-1 到 +1）
+            int yVariation = Random.Range(-1, 2); // -1, 0, 1 隨機
+            currentHeight += yVariation;
 
-            // 限制地板區塊之間高度差不要過大
-            if (x > startX)
-            {
-                int diff = tileHeight - lastGroundHeight;
-                if (Mathf.Abs(diff) > maxGroundStepHeight)
-                {
-                    tileHeight = lastGroundHeight + Mathf.Clamp(diff, -maxGroundStepHeight, maxGroundStepHeight);
-                }
-            }
-            lastGroundHeight = tileHeight;
+            // 限制高度不能超過範圍（避免過高或過低）
+            currentHeight = Mathf.Clamp(currentHeight, 1, mapHeight - 1);
 
-            // 建立主地板（地面）
-            for (int y = -5; y <= tileHeight; y++)
+            // 在目前高度以下填滿地面區塊
+            for (int y = 0; y <= currentHeight; y++)
             {
+                // 設定 Tile 到對應位置 (x, y, z)
                 groundTilemap.SetTile(new Vector3Int(x, y, 0), groundTile);
-            }
-
-            // 若地形太低，隨機補一格平台在 Y=1
-            if (tileHeight < 1 && Random.value < 0.5f)
-            {
-                groundTilemap.SetTile(new Vector3Int(x, 1, 0), groundTile);
-            }
-
-            // 浮空平台隨機生成
-            if (Random.value < floatingPlatformChance)
-            {
-                int floatingY = tileHeight + Random.Range(minFloatingHeightOffset, maxFloatingHeightOffset + 1);
-                floatingY = Mathf.Clamp(floatingY, tileHeight + 1, 5); // 限制浮空高度
-
-                int dx = Mathf.Abs(x - lastPlatformX);
-                int dy = Mathf.Abs(floatingY - lastPlatformY);
-
-                // 若上一平台存在，則檢查水平與垂直跳躍限制
-                if (lastPlatformX != -999 && (dx > maxJumpHorizontal || dy > maxJumpVertical))
-                    continue;
-
-                // 產生浮空平台
-                int platformLength = Random.Range(1, maxFloatingPlatformLength + 1);
-
-                for (int i = 0; i < platformLength && (x + i) <= endX; i++)
-                {
-                    groundTilemap.SetTile(new Vector3Int(x + i, floatingY, 0), groundTile);
-                }
-
-                lastPlatformX = x;
-                lastPlatformY = floatingY;
-
-                x += platformLength - 1; // 避免平台之間重疊
             }
         }
     }
