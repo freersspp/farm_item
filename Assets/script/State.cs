@@ -11,16 +11,25 @@ namespace PPman
         private string name;
 
         protected Player player;
-        protected StateMachine stateMachine; 
-        public void Enter()
+        protected StateMachine stateMachine;
+        protected float h;
+
+        public State(Player _player, StateMachine _statemachine, string _name)
+        {
+            player = _player;
+            stateMachine = _statemachine;
+            name = _name;
+        }
+        public virtual void Enter()
         {
             Debug.Log($"<color=green>進入<{name}>狀態</color>");
         }
-        public void Update()
+        public virtual void Update()
         {
-            Debug.Log($"<color=blue>更新<{name}>狀態</color>"); 
+            Debug.Log($"<color=blue>更新<{name}>狀態</color>");
+            h = Input.GetAxis("Horizontal");
         }
-        public void Exit()
+        public virtual void Exit()
         {
             Debug.Log($"<color=red>離開<{name}>狀態</color>");
         }
