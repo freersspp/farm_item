@@ -3,7 +3,7 @@
     /// <summary>
     /// 玩家待機
     /// </summary>
-    public class Player_idle : State
+    public class Player_idle : playerGround
     {
         public Player_idle(Player _player, StateMachine _statemachine, string _name) : base(_player, _statemachine, _name)
         {

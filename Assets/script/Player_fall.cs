@@ -12,16 +12,23 @@
         public override void Enter()
         {
             base.Enter();
+            player.ani.SetFloat("跳躍", -1);
         }
 
         public override void Exit()
         {
             base.Exit();
+            player.ani.SetBool("是否在地板上", true);
+
         }
 
         public override void Update()
         {
             base.Update();
+            if (player.IsGround())
+            {
+                stateMachine.SwitchState(player.player_idle);
+            }
         }
     }
 }

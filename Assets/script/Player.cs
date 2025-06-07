@@ -10,7 +10,10 @@ namespace PPman
         [field:Header("基本控制")]
         [field:SerializeField, Range(0, 20)] public float movespeed { get; private set; } = 5f;
         [field: SerializeField, Range(0, 20)] public float jumpForce { get; private set; } = 10f;
+        [field: SerializeField, Range(0, 3)] public float 攻擊中斷時間 { get; private set; } = 1f;
+        [field: SerializeField] public float[] 攻擊動畫時間 { get; private set; } 
 
+       
         // {get; private set;}唯獨屬性:允許外部取得但不能修改
         public Animator ani { get; private set; }
         public Rigidbody2D rig { get; private set; }
@@ -92,7 +95,7 @@ namespace PPman
         /// 確認是否在地板上
         /// </summary>
         /// <returns></returns>
-        public bool Isground()
+        public bool IsGround()
         {
             return Physics2D.OverlapBox(transform.position + 確認地板尺寸的位置, 確認地板尺寸, 0, 可以跳得圖層);
         }
