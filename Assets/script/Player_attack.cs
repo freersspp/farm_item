@@ -18,12 +18,12 @@ namespace PPman
         {
             base.Enter();
             //攻擊中斷時間後會reset到第一段攻擊
-            if(Time.deltaTime > 攻擊結束時間+ player.攻擊中斷時間)
+            if (Time.deltaTime > 攻擊結束時間 + player.攻擊中斷時間)
             {
                 攻擊最大段數 = 0;
             }
 
-            當前攻擊段數 ++;
+            當前攻擊段數++;
 
             //重製攻擊段數
             if (當前攻擊段數 > 攻擊最大段數)
@@ -32,8 +32,6 @@ namespace PPman
             }
 
             player.ani.SetFloat("攻擊段數", 當前攻擊段數);
-
-
             player.ani.SetTrigger("觸發攻擊");
         }
 
@@ -49,15 +47,15 @@ namespace PPman
         {
             base.Update();
             //Debug.Log($"<color=yellow>計時器: {timer}</color>");
-            
+
             //Reset動畫到idle狀態
             player.ani.SetFloat("移動", 0);
 
             //攻擊完畢後，切換到待機狀態
-            if (timer >= player.攻擊動畫時間[當前攻擊段數 - 1]) 
+            if (timer >= player.攻擊動畫時間[當前攻擊段數 - 1])
             {
                 stateMachine.SwitchState(player.player_idle);
             }
         }
-    } 
+    }
 }

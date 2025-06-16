@@ -36,6 +36,11 @@ namespace PPman
             {
                 stateMachine.SwitchState(player.player_attack);
             }
+            //如果玩家在地面上並且按下做邊shift就切換到"衝刺狀態"
+            if (player.IsGround() && Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                stateMachine.SwitchState(player.player_dash);
+            }
         }
     }
 }

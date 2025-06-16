@@ -11,9 +11,13 @@ namespace PPman
         [field:SerializeField, Range(0, 20)] public float movespeed { get; private set; } = 5f;
         [field: SerializeField, Range(0, 20)] public float jumpForce { get; private set; } = 10f;
         [field: SerializeField, Range(0, 3)] public float 攻擊中斷時間 { get; private set; } = 1f;
-        [field: SerializeField] public float[] 攻擊動畫時間 { get; private set; } 
+        [field: SerializeField] public float[] 攻擊動畫時間 { get; private set; }
+        [field: SerializeField, Range(0, 20)] public float 衝刺速度 { get; private set; } = 12f;
+        [field: SerializeField, Range(0, 3)] public float 衝刺時間 { get; private set; } = 0.3f;
 
-       
+
+
+
         // {get; private set;}唯獨屬性:允許外部取得但不能修改
         public Animator ani { get; private set; }
         public Rigidbody2D rig { get; private set; }
@@ -31,7 +35,9 @@ namespace PPman
         public Player_walk player_walk { get; private set; }
         public Player_jump player_jump { get; private set; }
         public Player_fall player_fall { get; private set; }
-        public Player_attack player_attack { get; private set; } 
+        public Player_attack player_attack { get; private set; }
+        public Player_dash player_dash { get; private set; }
+
         #endregion
 
         private void OnDrawGizmos()
@@ -53,7 +59,7 @@ namespace PPman
             player_jump = new Player_jump(this, stateMachine, "跳躍");
             player_fall = new Player_fall(this, stateMachine, "落下");
             player_attack = new Player_attack(this, stateMachine, "攻擊");
-             
+            player_dash = new Player_dash(this, stateMachine, "衝刺");
 
 
             //設定狀態機的"待機"為預設狀態
