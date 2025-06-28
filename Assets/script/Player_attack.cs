@@ -7,7 +7,7 @@ namespace PPman
     public class Player_attack : State
     {
         private int 當前攻擊段數;
-        private float 攻擊最大段數 = 2;
+        private float 攻擊最大段數 = 3;
         private float 攻擊結束時間;
 
         public Player_attack(Player _player, StateMachine _statemachine, string _name) : base(_player, _statemachine, _name)
