@@ -22,6 +22,11 @@
         public override void Update()
         {
             base.Update();
+            if (!player.canmove)
+            {
+                return;
+            }
+
 
             //如果玩家的水平值不為0，則切換到走路狀態
             if (h != 0)

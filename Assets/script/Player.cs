@@ -16,11 +16,14 @@ namespace PPman
         [field: SerializeField, Range(0, 3)] public float 衝刺時間 { get; private set; } = 0.3f;
 
 
-
-
         // {get; private set;}唯獨屬性:允許外部取得但不能修改
         public Animator ani { get; private set; }
         public Rigidbody2D rig { get; private set; }
+
+        public bool canmove { get; set; } = false; //是否可以移動
+        public bool canjump { get; set; } = false; //是否可以跳躍
+        public bool canattack { get; set; } = false; //是否可以攻擊 
+        public bool candash { get; set; } = false; //是否可以衝刺
 
 
         [Header("檢查地板")]
