@@ -10,8 +10,8 @@ namespace PPman
         [field:Header("基本控制")]
         [field:SerializeField, Range(0, 20)] public float movespeed { get; private set; } = 5f;
         [field: SerializeField, Range(0, 20)] public float jumpForce { get; private set; } = 10f;
-        [field: SerializeField, Range(0, 3)] public float 攻擊中斷時間 { get; private set; } = 1f;
-        [field: SerializeField] public float[] 攻擊動畫時間 { get; private set; }
+        [field: SerializeField, Range(0, 3)] public float 攻擊中斷時間 { get; private set; } = 1;
+        [field: SerializeField] public float[] attackanimationtime { get; private set; }
         [field: SerializeField, Range(0, 20)] public float 衝刺速度 { get; private set; } = 12f;
         [field: SerializeField, Range(0, 3)] public float 衝刺時間 { get; private set; } = 0.3f;
 

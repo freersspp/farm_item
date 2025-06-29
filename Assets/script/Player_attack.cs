@@ -6,8 +6,8 @@ namespace PPman
     /// </summary>
     public class Player_attack : State
     {
-        private int 當前攻擊段數;
-        private float 攻擊最大段數 = 3;
+        private int attackindex;
+        private float attackindexmax = 3;
         private float 攻擊結束時間;
 
         public Player_attack(Player _player, StateMachine _statemachine, string _name) : base(_player, _statemachine, _name)
@@ -17,29 +17,31 @@ namespace PPman
         public override void Enter()
         {
             base.Enter();
-            //攻擊中斷時間後會reset到第一段攻擊
-            if (Time.deltaTime > 攻擊結束時間 + player.攻擊中斷時間)
-            {
-                攻擊最大段數 = 0;
-            }
 
-            當前攻擊段數++;
-
+            attackindex++;
             //重製攻擊段數
-            if (當前攻擊段數 > 攻擊最大段數)
+            if (attackindex > attackindexmax)
             {
-                當前攻擊段數 = 1;
+                attackindex = 1;
             }
-
-            player.ani.SetFloat("攻擊段數", 當前攻擊段數);
+            player.ani.SetFloat("攻擊段數", attackindex);
             player.ani.SetTrigger("觸發攻擊");
+
+            //攻擊中斷時間後會reset到第一段攻擊
+            if (Time.time > 攻擊結束時間 + player.攻擊中斷時間)
+            {
+                attackindex = 1;
+            }
+            player.rig.constraints = RigidbodyConstraints2D.FreezeAll; //凍結角色移動
+
         }
 
         public override void Exit()
         {
             base.Exit();
 
-            攻擊結束時間 = Time.deltaTime;
+            攻擊結束時間 = Time.time;
+            player.rig.constraints = RigidbodyConstraints2D.FreezeRotation; //凍結角色移動
 
         }
 
@@ -52,7 +54,7 @@ namespace PPman
             player.ani.SetFloat("移動", 0);
 
             //攻擊完畢後，切換到待機狀態
-            if (timer >= player.攻擊動畫時間[當前攻擊段數 - 1])
+            if (timer >= player.attackanimationtime[attackindex - 1])
             {
                 stateMachine.SwitchState(player.player_idle);
             }

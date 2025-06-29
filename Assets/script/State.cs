@@ -29,7 +29,7 @@ namespace PPman
         {
             Debug.Log($"<color=green>進入<{name}>狀態</color>");
             // 重置計時器
-            timer = 0f;
+            timer = 0;
         }
         public virtual void Update()
         {
