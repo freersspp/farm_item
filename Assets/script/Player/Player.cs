@@ -14,6 +14,7 @@ namespace PPman
         [field: SerializeField] public float[] attackanimationtime { get; private set; }
         [field: SerializeField, Range(0, 20)] public float 衝刺速度 { get; private set; } = 12f;
         [field: SerializeField, Range(0, 3)] public float 衝刺時間 { get; private set; } = 0.3f;
+        
 
 
         // {get; private set;}唯獨屬性:允許外部取得但不能修改
@@ -24,6 +25,7 @@ namespace PPman
         public bool canjump { get; set; } = false; //是否可以跳躍
         public bool canattack { get; set; } = false; //是否可以攻擊 
         public bool candash { get; set; } = false; //是否可以衝刺
+        public bool candefense { get; set; } = false; //是否可以防禦
 
 
         [Header("檢查地板")]
@@ -40,6 +42,7 @@ namespace PPman
         public Player_fall player_fall { get; private set; }
         public Player_attack player_attack { get; private set; }
         public Player_dash player_dash { get; private set; }
+        public Play_defense player_defense { get; private set; }
 
         #endregion
 
@@ -63,10 +66,11 @@ namespace PPman
             player_fall = new Player_fall(this, stateMachine, "落下");
             player_attack = new Player_attack(this, stateMachine, "攻擊");
             player_dash = new Player_dash(this, stateMachine, "衝刺");
-
+            player_defense = new Play_defense(this, stateMachine, "防禦");
 
             //設定狀態機的"待機"為預設狀態
             stateMachine.DefaultState(player_idle);
+
         }
 
         private void Update()
@@ -108,6 +112,16 @@ namespace PPman
         {
             return Physics2D.OverlapBox(transform.position + 確認地板尺寸的位置, 確認地板尺寸, 0, 可以跳得圖層);
         }
+
+        public void SwitchControl(bool cancontrol)
+        {
+            rig.velocity = Vector3.zero; //將玩家停止
+            stateMachine.SwitchState(player_idle); //切換到待機狀態
+            canmove = cancontrol;
+            canjump = cancontrol;
+            canattack = cancontrol;
+        }
+
 
     }
      

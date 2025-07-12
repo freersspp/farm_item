@@ -5,7 +5,7 @@ namespace PPman
     /// <summary>
     /// 玩家衝刺狀態
     /// </summary>
-    public class Player_dash : State
+    public class Player_dash : PlayerState
     {
         private float dashSpeed;
         private float dashTime;

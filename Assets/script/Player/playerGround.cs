@@ -1,14 +1,13 @@
-﻿using UnityEngine;
+﻿using Fungus;
+using UnityEngine;
 
 namespace PPman
 {
 
-    public class playerGround : State
+    public class playerGround : PlayerState
     {
         public playerGround(Player _player, StateMachine _statemachine, string _name) : base(_player, _statemachine, _name)
         {
-
-
 
         }
 
@@ -40,6 +39,11 @@ namespace PPman
             if (player.candash && player.IsGround() && Input.GetKeyDown(KeyCode.LeftControl))
             {
                 stateMachine.SwitchState(player.player_dash);
+            }
+            //如果玩家在地面上並且按下滑鼠右鍵就切換到"防禦狀態"
+            if (player.candefense && player.IsGround() && Input.GetKeyDown(KeyCode.Mouse2))
+            {
+              stateMachine.SwitchState(player.player_defense);
             }
         }
     }

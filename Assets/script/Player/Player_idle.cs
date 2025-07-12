@@ -12,11 +12,15 @@
         public override void Enter()
         {
             base.Enter();
+            player.ani.SetFloat("移動", 0);
+            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeAll; //凍結旋轉
+            
         }
 
         public override void Exit()
         {
             base.Exit();
+            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeRotation; //凍結旋轉
         }
 
         public override void Update()

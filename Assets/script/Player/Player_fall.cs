@@ -3,7 +3,7 @@
     /// <summary>
     /// 玩家落下
     /// </summary>
-    public class Player_fall : State
+    public class Player_fall : PlayerState
     {
         public Player_fall(Player _player, StateMachine _statemachine, string _name) : base(_player, _statemachine, _name)
         {

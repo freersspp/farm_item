@@ -8,9 +8,8 @@ namespace PPman
 
     public class State
     {
-        private string name;
-
-        protected Player player;
+        protected string name;
+                 
         protected StateMachine stateMachine;
         protected float h;
 
@@ -18,13 +17,7 @@ namespace PPman
         /// 計時器 : 用於計算狀態持續時間
         /// </summary>
         protected float timer;
-
-        public State(Player _player, StateMachine _statemachine, string _name)
-        {
-            player = _player;
-            stateMachine = _statemachine;
-            name = _name;
-        }
+             
         public virtual void Enter()
         {
             Debug.Log($"<color=green>進入<{name}>狀態</color>");

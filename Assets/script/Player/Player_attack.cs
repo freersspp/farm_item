@@ -4,7 +4,7 @@ namespace PPman
     /// <summary>
     /// 玩家攻擊
     /// </summary>
-    public class Player_attack : State
+    public class Player_attack : PlayerState
     {
         private int attackindex;
         private float attackindexmax = 3;
@@ -49,7 +49,6 @@ namespace PPman
         {
             base.Update();
             //Debug.Log($"<color=yellow>計時器: {timer}</color>");
-
             //Reset動畫到idle狀態
             player.ani.SetFloat("移動", 0);
 
