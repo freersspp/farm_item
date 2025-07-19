@@ -15,11 +15,22 @@ namespace PPman
 
         public Flowchart flowchart { get; private set; }// Fungus 流程圖
 
-        public bool playerinarea;
+        public bool playerinarea { get; private set; }
+        public bool TalkingorNot { get; set; }
+        public int 手上任務物品數量 { get; set; } // 玩家手上任務物品數量
+        public int 任務物品需要數量 { get; set; } = 5; // 任務物品需要數量
+
+        [SerializeField] private Vector3 offsetinteraction; // 互動介面偏移量
+
+        private CanvasGroup groupinteraction; // 互動介面群組
+        private WorktoUIpoint worktoUIpoint; // 世界座標轉介面座標
 
         private void Awake()
         {
             flowchart = GetComponent<Flowchart>();
+            groupinteraction = GameObject.Find("群組_互動介面").GetComponent<CanvasGroup>();
+            worktoUIpoint = GameObject.Find("群組_互動介面").GetComponent<WorktoUIpoint>();
+
             // 初始化狀態機
             stateMachine = new StateMachine();
             Quest_before = new NPC_Quest_before(this, stateMachine, "任務前");
@@ -30,8 +41,16 @@ namespace PPman
         }
         private void Update()
         {
+#if UNITY_EDITOR
+            Test();
+#endif
             // 更新狀態機
             stateMachine.UpdateState();
+            // 如果玩家在互動區域內，則更新互動介面位置
+            if (playerinarea)
+            {
+                worktoUIpoint.Updatepoint(transform, offsetinteraction);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -40,8 +59,7 @@ namespace PPman
             if (collision.CompareTag("Player"))
             {
                 playerinarea = true;
-                 
-               
+                SwitchinteractionUI(playerinarea);
             }
         }
         private void OnTriggerExit2D(Collider2D collision)
@@ -50,8 +68,35 @@ namespace PPman
             if (collision.CompareTag("Player"))
             {
                 playerinarea = false;
-                
+                SwitchinteractionUI(playerinarea);
+
             }
         }
+        /// <summary>
+        /// 切換互動介面(驚嘆號)的顯示狀態
+        /// </summary>
+        /// <param name="fadein"></param>
+        public void SwitchinteractionUI(bool fadein)
+        {
+            //如果此物件不再階層面板上(停止遊戲或是刪除時)就跳出
+            if(!gameObject.activeInHierarchy)
+            {
+                return;
+            } 
+
+            StopAllCoroutines(); // 停止所有協程，避免重複啟動淡入淡出效果
+            StartCoroutine(FadeSystem.Fade(groupinteraction, fadein));
+        }
+
+
+#if UNITY_EDITOR
+        private void Test()
+        {
+            if (Input.GetKeyDown(KeyCode.KeypadPlus))
+            {
+                手上任務物品數量++;
+            }
+        }
+#endif
     }
 }

@@ -24,6 +24,11 @@ namespace PPman
         public override void Update()
         {
             base.Update();
+
+            if (npc.playerinarea && Input.GetKeyDown(KeyCode.F))
+            {
+                npc.flowchart.SendFungusMessage("任務完成");
+            }
         }
     }
 }

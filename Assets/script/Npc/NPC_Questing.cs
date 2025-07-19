@@ -24,6 +24,17 @@ namespace PPman
         public override void Update()
         {
             base.Update();
+
+            if (npc.playerinarea && Input.GetKeyDown(KeyCode.F))
+            {
+                npc.flowchart.SendFungusMessage("任務中");
+            }
+            //如果玩家 手上任務物品數量 >= 任務物品需要數量 就切換到任務完成
+            if (npc.手上任務物品數量 >= npc.任務物品需要數量)
+            {
+                stateMachine.SwitchState(npc.Quest_finish); // 切換到任務完成狀態
+            }
+
         }
     }
 }

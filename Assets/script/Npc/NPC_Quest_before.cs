@@ -16,7 +16,7 @@ namespace PPman
         }
 
         public override void Exit()
-        {
+        { 
             base.Exit();
         }
 
@@ -28,6 +28,12 @@ namespace PPman
             {
                 npc.flowchart.SendFungusMessage("任務前");
             }
+            if(npc.TalkingorNot)
+            {
+                stateMachine.SwitchState(npc.Questing); // 切換到任務中狀態
+            }
+
+
         }
     }
 }

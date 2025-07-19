@@ -20,7 +20,7 @@ namespace PPman
              
         public virtual void Enter()
         {
-            Debug.Log($"<color=green>進入<{name}>狀態</color>");
+            //Debug.Log($"<color=green>進入<{name}>狀態</color>");
             // 重置計時器
             timer = 0;
         }

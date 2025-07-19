@@ -4,22 +4,21 @@ namespace PPman
     /// <summary>
     /// 儲存玩家資料與基本功能
     /// </summary>
-    public class Player : MonoBehaviour
+    public class Player : character
     {
         #region 變數
         [field:Header("基本控制")]
         [field:SerializeField, Range(0, 20)] public float movespeed { get; private set; } = 5f;
         [field: SerializeField, Range(0, 20)] public float jumpForce { get; private set; } = 10f;
         [field: SerializeField, Range(0, 3)] public float 攻擊中斷時間 { get; private set; } = 1;
-        [field: SerializeField] public float[] attackanimationtime { get; private set; }
+        [field: SerializeField] public float[] 攻擊動畫時間 { get; private set; }
         [field: SerializeField, Range(0, 20)] public float 衝刺速度 { get; private set; } = 12f;
         [field: SerializeField, Range(0, 3)] public float 衝刺時間 { get; private set; } = 0.3f;
-        
+        [field:SerializeField]public float 防禦時間 { get; private set; }  //防禦時間
 
 
-        // {get; private set;}唯獨屬性:允許外部取得但不能修改
-        public Animator ani { get; private set; }
-        public Rigidbody2D rig { get; private set; }
+
+
 
         public bool canmove { get; set; } = false; //是否可以移動
         public bool canjump { get; set; } = false; //是否可以跳躍
@@ -32,6 +31,11 @@ namespace PPman
         [SerializeField] private Vector3 確認地板尺寸 = Vector3.one;
         [SerializeField] private Vector3 確認地板尺寸的位置;
         [SerializeField] private LayerMask 可以跳得圖層;
+
+        [Header("粒子效果")]
+        public GameObject dashFireTrail;
+
+
         #endregion
 
         #region 狀態資料
@@ -52,11 +56,10 @@ namespace PPman
             Gizmos.DrawWireCube(transform.position + 確認地板尺寸的位置, 確認地板尺寸);
         }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
 
-            ani = GetComponent<Animator>();
-            rig = GetComponent<Rigidbody2D>();
             //實例化狀態機
             stateMachine = new StateMachine();
             //初始化各個狀態, this在這邊指得是"Player" 
@@ -78,30 +81,6 @@ namespace PPman
             //更新狀態機
             stateMachine.UpdateState();
            
-        }
-
-        /// <summary>
-        /// 設定加速度
-        /// </summary>
-        /// <param name="velocity">加速度</param>
-        public void Setvelocity(Vector3 velocity)
-        {
-            rig.velocity = velocity;
-        }
-
-        /// <summary>
-        /// 翻轉角色
-        /// </summary>
-        /// <param name="h">方向</param>
-        public void Flip(float h)
-        {
-            if (Mathf.Abs(h) < 0.1)
-            {
-                return;
-            }
-
-            float 腳色角度 = h > 0 ? 0 : 180;
-            transform.eulerAngles = new Vector3(0, 腳色角度, 0);
         }
 
         /// <summary>

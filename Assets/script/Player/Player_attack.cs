@@ -53,7 +53,7 @@ namespace PPman
             player.ani.SetFloat("移動", 0);
 
             //攻擊完畢後，切換到待機狀態
-            if (timer >= player.attackanimationtime[attackindex - 1])
+            if (timer >= player.攻擊動畫時間[attackindex - 1])
             {
                 stateMachine.SwitchState(player.player_idle);
             }

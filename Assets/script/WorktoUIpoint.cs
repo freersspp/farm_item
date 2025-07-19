@@ -16,7 +16,7 @@ namespace PPman
         /// </summary>
         /// <param name="target">目標物件</param>
         /// <param name="offset">位移</param>
-        private void Updatepoint(Transform target, Vector3 offset)
+        public void Updatepoint(Transform target, Vector3 offset)
         {
             // 物件座標 + 偏移量
             Vector3 point = target.position + offset;

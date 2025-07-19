@@ -41,9 +41,9 @@ namespace PPman
                 stateMachine.SwitchState(player.player_dash);
             }
             //如果玩家在地面上並且按下滑鼠右鍵就切換到"防禦狀態"
-            if (player.candefense && player.IsGround() && Input.GetKeyDown(KeyCode.Mouse2))
+            if (player.candefense && player.IsGround() && Input.GetKeyDown(KeyCode.Mouse1))
             {
-              stateMachine.SwitchState(player.player_defense);
+                stateMachine.SwitchState(player.player_defense);
             }
         }
     }
