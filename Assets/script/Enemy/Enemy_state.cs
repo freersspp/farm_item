@@ -12,7 +12,7 @@ namespace PPman
         {
             enemy = _enemy;
             stateMachine = _stateMachine;
-            enemy.name = _name;
+            name = _name;
         }
 
         public override void Enter()

@@ -8,6 +8,27 @@ namespace PPman
     {
         [field: SerializeField]public Vector2 idleTime { get; private set; }
         [field: SerializeField] public Vector2 WalkTime { get; private set; }
+        [field: SerializeField, Range(1, 5)] public float Walkspeed { get; private set; }  = 1.5f; // 遊走速度
+        [field:SerializeField] public float followspeed { get; private set; } = 4f; // 追擊速度
+        [field:SerializeField, Tooltip("進入攻擊距離")] public float InAttackArea { get; private set; } = 2f; // 攻擊範圍
+        [field: SerializeField, Tooltip("攻擊間隔時間")] public float AttackTime { get; private set; } = 1.8f; // 攻擊時間
+
+        /// <summary>
+        /// 檢測前方有無牆壁和地上有無地板
+        /// </summary>
+        [field: SerializeField] private Vector3 CheckWall = Vector3.one;
+        [field: SerializeField] private Vector3 CheckWalloffset;
+        [field: SerializeField] private LayerMask layerWall; 
+        [field: SerializeField] private Vector3 CheckGround = Vector3.one;
+        [field: SerializeField] private Vector3 CheckGroundoffset;
+        [field: SerializeField] private LayerMask layerGround;
+
+        /// <summary>
+        /// 檢查前方有無玩家
+        /// </summary>
+        [field: SerializeField] private Vector3 CheckPlayer = Vector3.one;
+        [field: SerializeField] private Vector3 CheckPlayeroffset;
+        [field: SerializeField] private LayerMask layerPlayer;
 
         public StateMachine stateMachine { get; private set; } // 狀態機
         public Enemy_idle enemy_idle { get; private set; } // 待機狀態
@@ -16,10 +37,29 @@ namespace PPman
         public Enemy_attack enemy_attack { get; private set; } // 攻擊狀態
         public Enemy_die enemy_die { get; private set; } // 死亡狀態
 
+        public Transform player { get; private set; } // 玩家位置
+
+        private void OnDrawGizmos()
+        {
+            // 繪製檢測牆壁的範圍
+            Gizmos.color = new Color(1, 1, 0.6f, 0.5f);
+            Gizmos.DrawWireCube(transform.position + transform.TransformDirection(CheckWalloffset), CheckWall);
+            // 繪製檢測地面的範圍
+            Gizmos.color = new Color(1, 1, 0.6f, 0.5f);
+            Gizmos.DrawWireCube(transform.position + transform.TransformDirection(CheckGroundoffset), CheckGround);
+            // 繪製檢測玩家的範圍
+            Gizmos.color = new Color(0.6f, 1, 0.6f, 0.5f);
+            Gizmos.DrawWireCube(transform.position + transform.TransformDirection(CheckPlayeroffset), CheckPlayer);
+
+        }
+
 
         protected override void Awake()
         {
             base.Awake();
+
+            player = GameObject.Find("主角").transform; // 獲取玩家位置
+
             stateMachine = new StateMachine();
             enemy_idle = new Enemy_idle(this, stateMachine, "Idle");
             enemy_walk = new Enemy_walk(this, stateMachine, "Walk");
@@ -34,6 +74,31 @@ namespace PPman
         {
             // 更新狀態機
             stateMachine.UpdateState();
+            
+        }
+
+        // 檢測前方是否有牆壁
+        public bool IsWallfront()
+        {
+            return Physics2D.OverlapBox(transform.position + transform.TransformDirection(CheckWalloffset), CheckWall, 0, layerWall);
+        }
+
+        // 檢測前方是否有地板
+        public bool IsGroundfront()
+        {
+            return Physics2D.OverlapBox(transform.position + transform.TransformDirection(CheckGroundoffset), CheckGround, 0, layerGround);
+        }
+
+        // 檢測前方是否有玩家
+        public bool IsPlayerfront()
+        {
+            return Physics2D.OverlapBox(transform.position + transform.TransformDirection(CheckPlayeroffset), CheckPlayer, 0, layerPlayer);
+        }
+
+        protected override void Die()
+        {
+            base.Die();
+            stateMachine.SwitchState(enemy_die); // 切換到死亡狀態
         }
 
 

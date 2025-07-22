@@ -10,6 +10,9 @@ namespace PPman
         public override void Enter()
         {
             base.Enter();
+            enemy.ani.SetTrigger("觸發死亡");
+            enemy.Setvelocity(Vector3.zero); // 停止移動
+
         }
 
         public override void Exit()

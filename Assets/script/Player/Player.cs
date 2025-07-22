@@ -46,7 +46,9 @@ namespace PPman
         public Player_fall player_fall { get; private set; }
         public Player_attack player_attack { get; private set; }
         public Player_dash player_dash { get; private set; }
-        public Play_defense player_defense { get; private set; }
+        public Player_defense player_defense { get; private set; }
+        public Player_die player_die { get; private set; }
+
 
         #endregion
 
@@ -69,7 +71,8 @@ namespace PPman
             player_fall = new Player_fall(this, stateMachine, "落下");
             player_attack = new Player_attack(this, stateMachine, "攻擊");
             player_dash = new Player_dash(this, stateMachine, "衝刺");
-            player_defense = new Play_defense(this, stateMachine, "防禦");
+            player_defense = new Player_defense(this, stateMachine, "防禦");
+            player_die = new Player_die(this, stateMachine, "死亡");
 
             //設定狀態機的"待機"為預設狀態
             stateMachine.DefaultState(player_idle);
@@ -99,6 +102,12 @@ namespace PPman
             canmove = cancontrol;
             canjump = cancontrol;
             canattack = cancontrol;
+        }
+
+        protected override void Die()
+        {
+            base.Die();
+            stateMachine.SwitchState(player_die); //切換到死亡狀態
         }
 
 
