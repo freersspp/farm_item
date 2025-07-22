@@ -101,7 +101,7 @@ namespace PPman
             stateMachine.SwitchState(enemy_die); // 切換到死亡狀態
         }
 
-
+        
 
     }
 }

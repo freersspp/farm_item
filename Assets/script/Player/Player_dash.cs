@@ -24,8 +24,7 @@ namespace PPman
             // 動畫或特效
             player.ani.SetTrigger("觸發衝刺");
 
-            // 設定角色面向方向
-            player.Flip(h);
+            
 
             // 🔥 啟動火焰粒子效果
             if (player.dashFireTrail != null)
@@ -37,6 +36,9 @@ namespace PPman
         public override void Update()
         {
             base.Update();
+
+            // 設定角色面向方向
+            player.Flip(h);
 
             // 固定向左或右衝刺
             player.rig.velocity = new Vector2(h * dashSpeed, player.rig.velocity.y);

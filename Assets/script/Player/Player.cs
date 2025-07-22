@@ -34,7 +34,7 @@ namespace PPman
 
         [Header("粒子效果")]
         public GameObject dashFireTrail;
-
+        
 
         #endregion
 
@@ -110,7 +110,7 @@ namespace PPman
             stateMachine.SwitchState(player_die); //切換到死亡狀態
         }
 
-
+        
     }
      
 }

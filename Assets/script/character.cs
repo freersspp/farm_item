@@ -27,7 +27,10 @@ namespace PPman
         private void OnTriggerEnter2D(Collider2D collision)
         {
             //如果血量為0就跳出;
-            if (HP <= 0) return;
+            if (HP <= 0)
+            {
+                Destroy(gameObject);
+            }
 
             if (collision.CompareTag(damageTag))
             {
