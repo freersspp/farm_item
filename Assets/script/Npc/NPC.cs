@@ -86,7 +86,7 @@ namespace PPman
         /// <summary>
         /// 切換互動介面(驚嘆號)的顯示狀態
         /// </summary>
-        /// <param name="fadein"></param>
+        /// <param name="fadein">淡入效果</param>
         public void SwitchinteractionUI(bool fadein)
         {
             //如果此物件不再階層面板上(停止遊戲或是刪除時)就跳出

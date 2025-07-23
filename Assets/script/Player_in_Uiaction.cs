@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Fungus;
+using UnityEngine;
 namespace PPman
 {
 
@@ -9,6 +10,9 @@ namespace PPman
         public bool autoFollowUI = true;             // 是否自動更新位置
         private bool playerInRange = false;
         private WorktoUIpoint worktoUIpoint;         // 世界轉 UI 的工具
+        public Flowchart flowchart; // Fungus 流程圖
+
+
 
         private void Start()
         {
@@ -16,8 +20,9 @@ namespace PPman
             {
                 targetGroup = GameObject.Find("群組_互動介面")?.GetComponent<CanvasGroup>();
             }
-
+            flowchart = GetComponent<Flowchart>();
             worktoUIpoint = targetGroup?.GetComponent<WorktoUIpoint>();
+
         }
 
         private void Update()
@@ -26,6 +31,12 @@ namespace PPman
             {
                 worktoUIpoint.Updatepoint(transform, offset);
             }
+
+            if (playerInRange && Input.GetKeyDown(KeyCode.F))
+            {
+                flowchart.SendFungusMessage("觸發對話");
+            }
+
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
