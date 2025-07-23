@@ -1,4 +1,5 @@
 ﻿using Fungus;
+using System.Collections;
 using UnityEngine;
 
 namespace PPman
@@ -24,12 +25,16 @@ namespace PPman
 
         private CanvasGroup groupinteraction; // 互動介面群組
         private WorktoUIpoint worktoUIpoint; // 世界座標轉介面座標
+        private Transform player; // 玩家物件
+        private Transform npc;
 
         private void Awake()
         {
             flowchart = GetComponent<Flowchart>();
             groupinteraction = GameObject.Find("群組_互動介面").GetComponent<CanvasGroup>();
             worktoUIpoint = GameObject.Find("群組_互動介面").GetComponent<WorktoUIpoint>();
+            player = GameObject.Find("主角").transform; // 獲取玩家物件
+            npc = GameObject.Find("NPC").transform; // 獲取NPC物件
 
             // 初始化狀態機
             stateMachine = new StateMachine();
@@ -51,7 +56,13 @@ namespace PPman
             {
                 worktoUIpoint.Updatepoint(transform, offsetinteraction);
             }
+            //如果玩家跑到另一側就轉身
+            float direction = player.position.x > npc.transform.position.x ? 1 : -1;
+            Flip(direction);
         }
+
+
+
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -86,6 +97,17 @@ namespace PPman
 
             StopAllCoroutines(); // 停止所有協程，避免重複啟動淡入淡出效果
             StartCoroutine(FadeSystem.Fade(groupinteraction, fadein));
+        }
+
+        public void Flip(float h)
+        {
+            if (Mathf.Abs(h) < 0.1)
+            {
+                return;
+            }
+
+            float 腳色角度 = h > 0 ? 0 : 180;
+            transform.eulerAngles = new Vector3(0, 腳色角度, 0);
         }
 
 

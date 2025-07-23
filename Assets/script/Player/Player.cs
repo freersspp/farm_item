@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 namespace PPman
 {
     /// <summary>
@@ -7,14 +8,14 @@ namespace PPman
     public class Player : character
     {
         #region 變數
-        [field:Header("基本控制")]
-        [field:SerializeField, Range(0, 20)] public float movespeed { get; private set; } = 5f;
+        [field: Header("基本控制")]
+        [field: SerializeField, Range(0, 20)] public float movespeed { get; private set; } = 5f;
         [field: SerializeField, Range(0, 20)] public float jumpForce { get; private set; } = 10f;
         [field: SerializeField, Range(0, 3)] public float 攻擊中斷時間 { get; private set; } = 1;
         [field: SerializeField] public float[] 攻擊動畫時間 { get; private set; }
         [field: SerializeField, Range(0, 20)] public float 衝刺速度 { get; private set; } = 12f;
         [field: SerializeField, Range(0, 3)] public float 衝刺時間 { get; private set; } = 0.3f;
-        [field:SerializeField]public float 防禦時間 { get; private set; }  //防禦時間
+        [field: SerializeField] public float 防禦時間 { get; private set; }  //防禦時間
 
 
 
@@ -34,7 +35,6 @@ namespace PPman
 
         [Header("粒子效果")]
         public GameObject dashFireTrail;
-        
 
         #endregion
 
@@ -51,6 +51,10 @@ namespace PPman
 
 
         #endregion
+
+        private WorktoUIpoint WorktoUIpointHP; // 用於將世界座標轉換為UI座標
+        [SerializeField] private Vector3 offsetHP; // 血條UI的偏移量
+        private CanvasGroup PlayerHP; // 玩家血條UI的CanvasGroup
 
         private void OnDrawGizmos()
         {
@@ -76,6 +80,13 @@ namespace PPman
 
             //設定狀態機的"待機"為預設狀態
             stateMachine.DefaultState(player_idle);
+            //獲取血條UI的WorktoUIpoint組件
+            WorktoUIpointHP = GameObject.Find("群組_玩家血條").GetComponent<WorktoUIpoint>();
+            PlayerHP =GameObject.Find("群組_玩家血條").GetComponent<CanvasGroup>();
+
+            imgHP = GameObject.Find("圖片_血條").GetComponent<Image>();
+            imgHPeffect = GameObject.Find("圖片_血條_效果").GetComponent<Image>();
+
 
         }
 
@@ -83,7 +94,8 @@ namespace PPman
         {
             //更新狀態機
             stateMachine.UpdateState();
-           
+            WorktoUIpointHP.Updatepoint(transform, offsetHP); // 更新血條位置
+
         }
 
         /// <summary>
@@ -110,8 +122,13 @@ namespace PPman
             stateMachine.SwitchState(player_die); //切換到死亡狀態
         }
 
-        
+        protected override void Damage(float damage)
+        {
+            base.Damage(damage);
+            StartCoroutine(FadeSystem.Fade(PlayerHP)); // 開始血條淡入效果協程
+        }
+
+
     }
-     
+
 }
- 

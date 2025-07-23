@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 namespace PPman
 {
     /// <summary>
@@ -13,6 +15,7 @@ namespace PPman
         [SerializeField, Header("會讓自己受傷的物件標籤")] private string damageTag;
         [SerializeField, Range(0, 100)] protected float HPMAX = 100f; // 最大生命值
         protected float HP; // 當前生命值
+        protected Image imgHP, imgHPeffect; // 生命值UI和效果
 
 
 
@@ -64,15 +67,32 @@ namespace PPman
             transform.eulerAngles = new Vector3(0, 腳色角度, 0);
         }
 
-        private void Damage(float damage)
+        protected virtual void Damage(float damage)
         {
+            StartCoroutine(HPDamageEffect(HP, damage)); // 開始生命值減少效果協程
             HP -= damage; // 減少生命值
-            Debug.Log($"<color=red>受到傷害: {name}受傷, 生命值: {HP}</color>");
+            HPeffect(); // 更新生命值UI效果
 
             if (HP <= 0)
             {
                 Die(); // 死亡處理
             }
+        }
+
+        private IEnumerator HPDamageEffect(float hpOriginal, float damage)
+        {
+            float count = 50;//執行次數
+            float reduce = damage / count; // 每次減少的生命值
+            for (int i = 0; i < count; i++)
+            {
+                hpOriginal -= reduce; // 減少生命值
+                imgHPeffect.fillAmount = hpOriginal / HPMAX; // 更新生命值UI效果
+                yield return new WaitForSeconds(0.01f); // 等待0.05秒
+            }
+        }
+        private void HPeffect()
+        {
+            imgHP.fillAmount = HP / HPMAX; // 更新生命值UI
         }
 
         protected virtual void Die()
