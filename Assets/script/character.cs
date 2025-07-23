@@ -32,7 +32,7 @@ namespace PPman
             //如果血量為0就跳出;
             if (HP <= 0)
             {
-                Destroy(gameObject);
+                return;
             }
 
             if (collision.CompareTag(damageTag))

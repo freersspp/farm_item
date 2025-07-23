@@ -6,7 +6,6 @@ namespace PPman
     /// </summary>
     public class AttackValue : MonoBehaviour
     {
-        [field:SerializeField, Header("攻擊力"), Range(0, 100)]public float attackPower { get; private set; } = 5;
-
+        [field:SerializeField, Header("攻擊力"), Range(0, 100)]public float attackPower { get; private set; } = 10;
     }
 }
