@@ -941,6 +941,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 832069762}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 832069765}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 832069764}
   m_SourcePrefab: {fileID: 100100000, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
 --- !u!4 &231097234 stripped
 Transform:
@@ -45004,6 +45010,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 363762722}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 363762727}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 363762726}
   m_SourcePrefab: {fileID: 100100000, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
 --- !u!4 &363762713 stripped
 Transform:
@@ -45097,8 +45109,7 @@ MonoBehaviour:
     height: 0
   selectedBlocks:
   - {fileID: 363762724}
-  selectedCommands:
-  - {fileID: 363762723}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -45166,7 +45177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 132.00002
+    x: 131.00002
     y: 73.5
     width: 142
     height: 40
@@ -45177,8 +45188,122 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 363762722}
   commandList:
+  - {fileID: 363762727}
   - {fileID: 363762723}
+  - {fileID: 363762726}
   suppressAllAutoSelections: 0
+--- !u!114 &363762726
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195392965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 4
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &363762727
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195392965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 3
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &441005714
 GameObject:
   m_ObjectHideFlags: 0
@@ -45495,6 +45620,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 650336032}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 650336041}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 650336040}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 650336039}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 650336038}
   m_SourcePrefab: {fileID: 100100000, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
 --- !u!4 &553456990 stripped
 Transform:
@@ -45981,9 +46118,8 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 650336021}
-  selectedCommands:
-  - {fileID: 650336036}
+  - {fileID: 650336019}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -46062,6 +46198,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 650336016}
   commandList:
+  - {fileID: 650336041}
   - {fileID: 650336017}
   - {fileID: 650336029}
   - {fileID: 650336030}
@@ -46100,6 +46237,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 650336032}
+  - {fileID: 650336038}
   suppressAllAutoSelections: 0
 --- !u!114 &650336020
 MonoBehaviour:
@@ -46129,6 +46267,7 @@ MonoBehaviour:
   - {fileID: 650336035}
   - {fileID: 650336034}
   - {fileID: 650336033}
+  - {fileID: 650336039}
   suppressAllAutoSelections: 0
 --- !u!114 &650336021
 MonoBehaviour:
@@ -46156,6 +46295,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 650336036}
+  - {fileID: 650336040}
   suppressAllAutoSelections: 0
 --- !u!114 &650336022
 MonoBehaviour:
@@ -46556,6 +46696,230 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &650336038
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650336009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 23
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &650336039
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650336009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 22
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &650336040
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650336009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 21
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &650336041
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650336009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 20
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &652733649
 GameObject:
   m_ObjectHideFlags: 0
@@ -47246,8 +47610,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -183.23068
-    y: -114.358826
+    x: -181.23068
+    y: -113.358826
     width: 86
     height: 40
   tint: {r: 0.754717, g: 0.68325084, b: 0.08899963, a: 1}
@@ -47391,9 +47755,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 742053787}
+  - {fileID: 742053791}
   selectedCommands:
-  - {fileID: 742053812}
+  - {fileID: 742053794}
   variables: []
   description: 
   stepPause: 0
@@ -48541,8 +48905,7 @@ MonoBehaviour:
     height: 0
   selectedBlocks:
   - {fileID: 832069761}
-  selectedCommands:
-  - {fileID: 832069762}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -48611,7 +48974,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 161.00002
-    y: 119.5
+    y: 121.5
     width: 142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -48621,8 +48984,10 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 832069759}
   commandList:
+  - {fileID: 832069765}
   - {fileID: 832069760}
   - {fileID: 832069762}
+  - {fileID: 832069764}
   suppressAllAutoSelections: 0
 --- !u!114 &832069762
 MonoBehaviour:
@@ -48651,6 +49016,118 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &832069764
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832069752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 6
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &832069765
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832069752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 5
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &920020268
 GameObject:
   m_ObjectHideFlags: 0
@@ -54923,6 +55400,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4701899040799972353, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1563503640}
+    - targetCorrespondingSourceObject: {fileID: 4701899040799972353, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1563503643}
+    - targetCorrespondingSourceObject: {fileID: 4701899040799972353, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1563503642}
   m_SourcePrefab: {fileID: 100100000, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
 --- !u!4 &1563503630 stripped
 Transform:
@@ -55043,7 +55526,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 87.8235
-    y: -139.05878
+    y: -138.05878
     width: 142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -55053,7 +55536,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1563503639}
   commandList:
+  - {fileID: 1563503643}
   - {fileID: 1563503640}
+  - {fileID: 1563503642}
   suppressAllAutoSelections: 0
 --- !u!114 &1563503639
 MonoBehaviour:
@@ -55097,6 +55582,118 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1563503642
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210382653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 3
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1563503643
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210382653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 2
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1574270928
 GameObject:
   m_ObjectHideFlags: 0
@@ -55288,6 +55885,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1588441178}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1588441182}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1588441181}
   m_SourcePrefab: {fileID: 100100000, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
 --- !u!4 &1588441168 stripped
 Transform:
@@ -55449,7 +56052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 115.000015
+    x: 114.000015
     y: 68.5
     width: 142
     height: 40
@@ -55460,9 +56063,11 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1588441175}
   commandList:
+  - {fileID: 1588441182}
   - {fileID: 1588441176}
   - {fileID: 1588441179}
   - {fileID: 1588441178}
+  - {fileID: 1588441181}
   suppressAllAutoSelections: 0
 --- !u!114 &1588441178
 MonoBehaviour:
@@ -55518,6 +56123,118 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1588441181
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218530281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 6
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1588441182
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218530281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 5
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1595852046
 GameObject:
   m_ObjectHideFlags: 0
@@ -55837,6 +56554,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4701899040799972353, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1945760154}
+    - targetCorrespondingSourceObject: {fileID: 4701899040799972353, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1945760158}
+    - targetCorrespondingSourceObject: {fileID: 4701899040799972353, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1945760157}
   m_SourcePrefab: {fileID: 100100000, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
 --- !u!4 &1632156353 stripped
 Transform:
@@ -61320,8 +62043,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 123.000015
-    y: 81.5
+    x: 121.000015
+    y: 82.5
     width: 142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -61331,9 +62054,11 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1945760151}
   commandList:
+  - {fileID: 1945760158}
   - {fileID: 1945760152}
   - {fileID: 1945760155}
   - {fileID: 1945760154}
+  - {fileID: 1945760157}
   suppressAllAutoSelections: 0
 --- !u!114 &1945760154
 MonoBehaviour:
@@ -61389,6 +62114,118 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1945760157
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945760142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 5
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1945760158
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945760142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 4
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1976576081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61516,6 +62353,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1976576095}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1976576108}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1976576107}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1976576106}
+    - targetCorrespondingSourceObject: {fileID: 4792163745405868255, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1976576105}
   m_SourcePrefab: {fileID: 100100000, guid: cc7c3a1c692c3724bbf409aae03621dc, type: 3}
 --- !u!4 &1976576082 stripped
 Transform:
@@ -61608,9 +62457,8 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 1976576096}
-  selectedCommands:
-  - {fileID: 1976576095}
+  - {fileID: 1976576100}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -61689,6 +62537,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1976576089}
   commandList:
+  - {fileID: 1976576108}
   - {fileID: 1976576090}
   - {fileID: 1976576092}
   - {fileID: 1976576093}
@@ -61752,7 +62601,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1976576095
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -61791,7 +62640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 290.24393
+    x: 291.46344
     y: 120.73169
     width: 79.26829
     height: 40
@@ -61803,10 +62652,11 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1976576095}
+  - {fileID: 1976576105}
   suppressAllAutoSelections: 0
 --- !u!114 &1976576097
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -61833,7 +62683,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1976576098
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -61884,6 +62734,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1976576097}
+  - {fileID: 1976576106}
   suppressAllAutoSelections: 0
 --- !u!114 &1976576100
 MonoBehaviour:
@@ -61911,6 +62762,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1976576098}
+  - {fileID: 1976576107}
   suppressAllAutoSelections: 0
 --- !u!114 &1976576101
 MonoBehaviour:
@@ -61987,6 +62839,230 @@ MonoBehaviour:
   hideThisOption:
     booleanRef: {fileID: 0}
     booleanVal: 0
+--- !u!114 &1976576105
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894262807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 16
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1976576106
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894262807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 15
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1976576107
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894262807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 14
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1976576108
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894262807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 13
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8386325178742060065}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1998554610
 GameObject:
   m_ObjectHideFlags: 0
@@ -62043,8 +63119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 63
-    y: 77
+    x: 65
+    y: 79
     width: 98
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -62090,7 +63166,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1998554612}
   selectedCommands:
-  - {fileID: 1998554619}
+  - {fileID: 1998554616}
   variables: []
   description: 
   stepPause: 0
@@ -62646,7 +63722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1976576088}
+  selectedFlowchart: {fileID: 1563503636}
 --- !u!4 &2107871065
 Transform:
   m_ObjectHideFlags: 1
