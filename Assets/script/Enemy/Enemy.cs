@@ -12,7 +12,7 @@ namespace PPman
         [field: SerializeField] public Vector2 WalkTime { get; private set; }
         [field: SerializeField, Range(1, 5)] public float Walkspeed { get; private set; }  = 1.5f; // 遊走速度
         [field:SerializeField] public float followspeed { get; private set; } = 4f; // 追擊速度
-        [field:SerializeField, Tooltip("進入攻擊距離")] public float InAttackArea { get; private set; } = 2f; // 攻擊範圍
+        [field:SerializeField, Tooltip("進入攻擊距離")] public float InAttackArea { get; private set; } = 7; // 攻擊範圍
         [field: SerializeField, Tooltip("攻擊間隔時間")] public float AttackTime { get; private set; } = 1.2f; // 攻擊時間
 
         [SerializeField, Tooltip("敵人血條UI預製物:群組敵人血條")] private GameObject enemyPrefabHP; // 群組敵人血條預製物
@@ -68,7 +68,7 @@ namespace PPman
         {
             base.Awake();
 
-            player = GameObject.Find("主角").transform; // 獲取玩家位置
+            player = FindClosestPlayer().transform; // 獲取玩家位置
 
             stateMachine = new StateMachine();
             enemy_idle = new Enemy_idle(this, stateMachine, "Idle");
@@ -95,8 +95,28 @@ namespace PPman
             // 更新狀態機
             stateMachine.UpdateState();
             WorktoUIpointHP.Updatepoint(transform, offsetHP); // 更新血條位置
-
+            player = FindClosestPlayer();
         }
+
+        private Transform FindClosestPlayer()
+        {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            Transform closest = null;
+            float minDistance = Mathf.Infinity;
+
+            foreach (GameObject obj in players)
+            {
+                float dist = Vector3.Distance(transform.position, obj.transform.position);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    closest = obj.transform;
+                }
+            }
+
+            return closest;
+        }
+
 
         // 檢測前方是否有牆壁
         public bool IsWallfront()
@@ -131,7 +151,7 @@ namespace PPman
 
         private IEnumerator DelayFadeOut()
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1);
             StartCoroutine(FadeSystem.Fade(groupHP, false)); // 淡出血條
         }
         

@@ -87,7 +87,7 @@ namespace PPman
             {
                 hpOriginal -= reduce; // 減少生命值
                 imgHPeffect.fillAmount = hpOriginal / HPMAX; // 更新生命值UI效果
-                yield return new WaitForSeconds(0.01f); // 等待0.05秒
+                yield return new WaitForSeconds(0.05f); // 等待0.05秒
             }
         }
         private void HPeffect()

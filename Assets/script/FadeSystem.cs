@@ -22,7 +22,7 @@ namespace PPman
                 //如果是淡入, 透明度增加, 否則透明度減少
                 group.alpha += increase;
                 //漸變中間等待時間為0.03秒
-                yield return new WaitForSeconds(0.0001f);
+                yield return new WaitForSeconds(0.03f);
             }
 
         }
