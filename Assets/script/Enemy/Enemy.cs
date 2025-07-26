@@ -12,14 +12,14 @@ namespace PPman
         [field: SerializeField] public Vector2 WalkTime { get; private set; }
         [field: SerializeField, Range(1, 5)] public float Walkspeed { get; private set; }  = 1.5f; // 遊走速度
         [field:SerializeField] public float followspeed { get; private set; } = 4f; // 追擊速度
-        [field:SerializeField, Tooltip("進入攻擊距離")] public float InAttackArea { get; private set; } = 6; // 攻擊範圍
+        [field:SerializeField, Tooltip("進入攻擊距離")] public float InAttackArea { get; private set; } = 1; // 攻擊範圍
         [field: SerializeField, Tooltip("攻擊間隔時間")] public float AttackTime { get; private set; } = 1.2f; // 攻擊時間
 
         [SerializeField, Tooltip("敵人血條UI預製物:群組敵人血條")] private GameObject enemyPrefabHP; // 群組敵人血條預製物
         private Transform groupEnemyHP;
 
         /// <summary>
-        /// 檢測前方有無牆壁和地上有無地板SSSSS
+        /// 檢測前方有無牆壁和地上有無地板
         /// </summary>
         [field: SerializeField] private Vector3 CheckWall = Vector3.one;
         [field: SerializeField] private Vector3 CheckWalloffset;
