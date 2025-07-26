@@ -44,7 +44,7 @@ namespace PPman
             if(timer >= enemy.AttackTime)
             {
                 //攻擊完畢後，切換到待機狀態
-                stateMachine.SwitchState(enemy.enemy_walk);
+                stateMachine.SwitchState(enemy.enemy_idle);
             }
         }
     }
