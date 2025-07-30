@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 namespace PPman
 {
@@ -55,6 +56,7 @@ namespace PPman
         private WorktoUIpoint WorktoUIpointHP; // 用於將世界座標轉換為UI座標
         [SerializeField] private Vector3 offsetHP; // 血條UI的偏移量
         private CanvasGroup PlayerHP; // 玩家血條UI的CanvasGroup
+        private CanvasGroup BlackImg; // 黑色背景的CanvasGroup
 
         private void OnDrawGizmos()
         {
@@ -86,7 +88,7 @@ namespace PPman
 
             imgHP = GameObject.Find("圖片_血條").GetComponent<Image>();
             imgHPeffect = GameObject.Find("圖片_血條_效果").GetComponent<Image>();
-
+            BlackImg = GameObject.Find("圖片_黑色布幕").GetComponent<CanvasGroup>();
 
         }
 
@@ -116,17 +118,28 @@ namespace PPman
             canattack = cancontrol;
         }
 
-        protected override void Die()
-        {
-            base.Die();
-            stateMachine.SwitchState(player_die); //切換到死亡狀態
-        }
-
         protected override void Damage(float damage)
         {
             base.Damage(damage);
             StartCoroutine(FadeSystem.Fade(PlayerHP)); // 開始血條淡入效果協程
+            CameraManager.Instance.StartShake(4, 8, 0.2f); // 相機震動效果
         }
+
+        protected override void Die()
+        {
+            base.Die();
+            stateMachine.SwitchState(player_die); //切換到死亡狀態
+            StartCoroutine(DelayfadeinBlack()); // 開始黑色背景淡入效果協程
+            CameraManager.Instance.StartShake(12, 10, 0.3f); // 相機震動效果
+        }
+
+        private IEnumerator DelayfadeinBlack()
+        {
+            yield return new WaitForSeconds(1f); // 等待1秒
+            StartCoroutine(FadeSystem.Fade(BlackImg)); // 開始黑色背景淡入效果協程
+        }
+
+      
 
 
     }

@@ -41,7 +41,7 @@ namespace PPman
             base.Update();
             // 攻擊狀態下的更新邏輯
 
-            if(timer >= enemy.AttackTime)
+            if (timer >= enemy.AttackTime)
             {
                 //攻擊完畢後，切換到待機狀態
                 stateMachine.SwitchState(enemy.enemy_idle);

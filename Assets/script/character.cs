@@ -29,17 +29,14 @@ namespace PPman
         //2D觸發事件(碰到勾選Istrigger的物件會執行一次, "collision"會記錄碰到的物件資訊)
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            //如果血量為0就跳出;
             if (HP <= 0)
             {
-                Destroy(gameObject, 1f);
+                return; // 如果生命值小於等於0，則不處理碰撞
             }
-
             if (collision.CompareTag(damageTag))
             {
                 Damage(collision.GetComponent<AttackValue>().attackPower);
             }
-            
         }
 
 
@@ -81,13 +78,13 @@ namespace PPman
 
         private IEnumerator HPDamageEffect(float hpOriginal, float damage)
         {
-            float count = 50;//執行次數
+            float count = 20;//執行次數
             float reduce = damage / count; // 每次減少的生命值
             for (int i = 0; i < count; i++)
             {
                 hpOriginal -= reduce; // 減少生命值
                 imgHPeffect.fillAmount = hpOriginal / HPMAX; // 更新生命值UI效果
-                yield return new WaitForSeconds(0.05f); // 等待0.05秒
+                yield return new WaitForSeconds(0.04f); // 等待0.04秒
             }
         }
         private void HPeffect()
@@ -98,6 +95,13 @@ namespace PPman
         protected virtual void Die()
         {
             Debug.Log($"<color=red> {name}死亡</color>");
+            StartCoroutine(gameobjectinactive(gameObject, 1)); // 禁用物件
+        }
+
+        private IEnumerator gameobjectinactive(GameObject obj, float time)
+        {            
+            yield return new WaitForSeconds(1); // 等待指定時間
+            obj.SetActive(false); // 禁用物件
         }
     }
 }

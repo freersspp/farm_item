@@ -10,9 +10,9 @@ namespace PPman
     {
         [field: SerializeField]public Vector2 idleTime { get; private set; }
         [field: SerializeField] public Vector2 WalkTime { get; private set; }
-        [field: SerializeField, Range(1, 5)] public float Walkspeed { get; private set; }  = 1.5f; // 遊走速度
+        [field: SerializeField, Range(1, 5)] public float Walkspeed { get; private set; }  = 1.6f; // 遊走速度
         [field:SerializeField] public float followspeed { get; private set; } = 4f; // 追擊速度
-        [field:SerializeField, Tooltip("進入攻擊距離")] public float InAttackArea { get; private set; } = 1; // 攻擊範圍
+        [field:SerializeField, Tooltip("進入攻擊距離")] public float InAttackArea { get; private set; } =1; // 攻擊範圍
         [field: SerializeField, Tooltip("攻擊間隔時間")] public float AttackTime { get; private set; } = 1.2f; // 攻擊時間
 
         [SerializeField, Tooltip("敵人血條UI預製物:群組敵人血條")] private GameObject enemyPrefabHP; // 群組敵人血條預製物
@@ -49,7 +49,7 @@ namespace PPman
         private WorktoUIpoint WorktoUIpointHP;
         [SerializeField] private Vector3 offsetHP;
 
-        private void OnDrawGizmos()
+             private void OnDrawGizmos()
         {
             // 繪製檢測牆壁的範圍
             Gizmos.color = new Color(1, 1, 0.6f, 0.5f);
@@ -140,6 +140,7 @@ namespace PPman
         {
             base.Damage(damage);
             StartCoroutine(FadeSystem.Fade(groupHP));
+            CameraManager.Instance.StartShake(0.8f, 8, 0.2f); // 相機震動效果
         }
 
         protected override void Die()
@@ -147,11 +148,13 @@ namespace PPman
             base.Die();
             stateMachine.SwitchState(enemy_die); // 切換到死亡狀態
             StartCoroutine(DelayFadeOut()); // 延遲淡出血條
+            CameraManager.Instance.StartShake(1.2f, 10, 0.5f);
+            GetComponent<ItemDropper>()?.TryDrop(); // 嘗試掉落物品
         }
 
         private IEnumerator DelayFadeOut()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             StartCoroutine(FadeSystem.Fade(groupHP, false)); // 淡出血條
         }
         

@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8948676365049342632}
   - component: {fileID: 7963902825648317234}
   - component: {fileID: 370734568203367533}
-  - component: {fileID: 3795573999046275176}
+  - component: {fileID: 425064074663137838}
   - component: {fileID: 2438483751850505562}
   m_Layer: 5
   m_Name: "\u7FA4\u7D44_\u6575\u4EBA\u8840\u689D"
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &3795573999046275176
+--- !u!225 &425064074663137838
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,8 +166,8 @@ CanvasGroup:
   m_GameObject: {fileID: 4509445873120031442}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &2438483751850505562
 MonoBehaviour:

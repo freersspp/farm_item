@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+namespace PPman
 {
-    public Transform target; // 會在角色切換時更改這個 target
-    public Vector3 offset;
-    public float followSpeed = 5f;
-
-    void LateUpdate()
+    public class CameraFollow : MonoBehaviour
     {
-        if (target != null)
+        public Transform target; // 會在角色切換時更改這個 target
+        public Vector3 offset;
+        public float followSpeed = 5f;
+
+        void LateUpdate()
         {
-            Vector3 targetPos = target.position + offset;
-            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+            if (target != null)
+            {
+                Vector3 targetPos = target.position + offset;
+                transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+            }
         }
-    }
 
-    public void SetTarget(Transform newTarget)
-    {
-        target = newTarget;
+        public void SetTarget(Transform newTarget)
+        {
+            target = newTarget;
+        }
     }
 }
