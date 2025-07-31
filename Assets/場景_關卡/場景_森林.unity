@@ -64031,9 +64031,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1998554627}
+  - {fileID: 1998554633}
   selectedCommands:
-  - {fileID: 1998554631}
+  - {fileID: 1998554638}
   variables:
   - {fileID: 1998554623}
   description: 
@@ -64494,7 +64494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 21
   indentLevel: 0
-  storyText: "{S=5}\u6309{b}{color=blue}\"\u6ED1\u9F20\u53F3\u9375\"{/color}{/b}\u53EF\u4EE5\u9632\u79A6!"
+  storyText: "{S=5}\u6309{b}{color=blue}\"K\"{/color}{/b}\u53EF\u4EE5\u9632\u79A6!"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -64521,7 +64521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 20
   indentLevel: 0
-  storyText: "{S=5}\u6309{b}{color=blue}\"\u6ED1\u9F20\u5DE6\u9375\"{/color}{/b}\u53EF\u4EE5\u653B\u64CA!"
+  storyText: "{S=5}\u6309{b}{color=blue}\"J\"{/color}{/b}\u53EF\u4EE5\u653B\u64CA!"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
