@@ -130,7 +130,7 @@ namespace PPman
             base.Die();
             stateMachine.SwitchState(player_die); //切換到死亡狀態
             StartCoroutine(DelayfadeinBlack()); // 開始黑色背景淡入效果協程
-            CameraManager.Instance.StartShake(12, 10, 0.3f); // 相機震動效果
+            CameraManager.Instance.StartShake(10, 10, 0.3f); // 相機震動效果
         }
 
         private IEnumerator DelayfadeinBlack()
