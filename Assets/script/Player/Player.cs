@@ -122,7 +122,7 @@ namespace PPman
         {
             base.Damage(damage);
             StartCoroutine(FadeSystem.Fade(PlayerHP)); // 開始血條淡入效果協程
-            CameraManager.Instance.StartShake(4, 8, 0.2f); // 相機震動效果
+            CameraManager.Instance.StartShake(4,4, 0.2f); // 相機震動效果
         }
 
         protected override void Die()
@@ -130,7 +130,7 @@ namespace PPman
             base.Die();
             stateMachine.SwitchState(player_die); //切換到死亡狀態
             StartCoroutine(DelayfadeinBlack()); // 開始黑色背景淡入效果協程
-            CameraManager.Instance.StartShake(10, 10, 0.3f); // 相機震動效果
+            CameraManager.Instance.StartShake(5, 5, 0.3f); // 相機震動效果
         }
 
         private IEnumerator DelayfadeinBlack()

@@ -14,12 +14,12 @@ namespace PPman
             if (Random.value <= dropRate)
             {
                 GameObject drop = dropItems[Random.Range(0, dropItems.Length)];
-                GameObject temp = Instantiate(drop, transform.position + Vector3.up * 1.5f, Quaternion.identity);
+                GameObject temp = Instantiate(drop, transform.position + Vector3.up * 0.5f, Quaternion.identity);
 
                 Rigidbody2D rb = temp.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.velocity = new Vector2(Random.Range(-1.5f, 1.5f), Random.Range(3f, 6f));
+                    rb.velocity = new Vector2(Random.Range(-1.5f, 1.5f), 0.1f);
                 }
             }
         }

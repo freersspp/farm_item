@@ -31,7 +31,7 @@ namespace PPman
                 stateMachine.SwitchState(player.player_jump);
             }
             //如果玩家在某些條件下 並且 按滑鼠左鍵就切換到"攻擊狀態"
-            if (player.canattack && player.IsGround() && Input.GetKeyDown(KeyCode.J))
+            if (player.canattack && player.IsGround() && Input.GetKeyDown(KeyCode.Mouse0))
             {
                 stateMachine.SwitchState(player.player_attack);
             }
@@ -41,7 +41,7 @@ namespace PPman
                 stateMachine.SwitchState(player.player_dash);
             }
             //如果玩家在地面上並且按下滑鼠右鍵就切換到"防禦狀態"
-            if (player.candefense && player.IsGround() && Input.GetKeyDown(KeyCode.K))
+            if (player.candefense && player.IsGround() && Input.GetKeyDown(KeyCode.Mouse1))
             {
                 stateMachine.SwitchState(player.player_defense);
             }
