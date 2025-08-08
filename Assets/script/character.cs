@@ -53,12 +53,14 @@ namespace PPman
         /// 翻轉角色
         /// </summary>
         /// <param name="h">方向</param>
+        public bool isFacingRight = true;
         public void Flip(float h)
         {
             if (Mathf.Abs(h) < 0.1)
             {
                 return;
             }
+            isFacingRight = h < 0;
 
             float 腳色角度 = h > 0 ? 0 : 180;
             transform.eulerAngles = new Vector3(0, 腳色角度, 0);
@@ -96,10 +98,24 @@ namespace PPman
         {
             Debug.Log($"<color=red> {name}死亡</color>");
             StartCoroutine(gameobjectinactive(gameObject, 1)); // 禁用物件
+            SoundManager.Instance.PlaySound(Soundtype.PlayerDie); // 播放死亡音效
         }
 
+
+        #region 音效處理
+        private void PlaySound(Soundtype soundtype)
+        {
+            SoundManager.Instance.PlaySound(soundtype); // 播放受傷音效
+        }
+
+        private void PlaySoundRandomvolume(Soundtype soundtype)
+        {
+            SoundManager.Instance.PlaySound(soundtype, 0.8f, 1.5f); // 播放受傷音效
+        }
+        #endregion
+
         private IEnumerator gameobjectinactive(GameObject obj, float time)
-        {            
+        {
             yield return new WaitForSeconds(1); // 等待指定時間
             obj.SetActive(false); // 禁用物件
         }

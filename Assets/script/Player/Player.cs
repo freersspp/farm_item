@@ -17,7 +17,10 @@ namespace PPman
         [field: SerializeField, Range(0, 20)] public float 衝刺速度 { get; private set; } = 12f;
         [field: SerializeField, Range(0, 3)] public float 衝刺時間 { get; private set; } = 0.3f;
         [field: SerializeField] public float 防禦時間 { get; private set; }  //防禦時間
-
+        [field: SerializeField] public GameObject bulletPrefab; //子彈預製體
+        [field: SerializeField] public Transform firePoint; //發射位置
+        [field: SerializeField] public float bulletSpeed = 10f; //子彈速度
+        [field:SerializeField] public float Skill2time { get; private set; } 
 
 
 
@@ -27,6 +30,7 @@ namespace PPman
         public bool canattack { get; set; } = false; //是否可以攻擊 
         public bool candash { get; set; } = false; //是否可以衝刺
         public bool candefense { get; set; } = false; //是否可以防禦
+        public bool canskill2 { get; set; } = false; //是否可以使用技能2
 
 
         [Header("檢查地板")]
@@ -49,6 +53,8 @@ namespace PPman
         public Player_dash player_dash { get; private set; }
         public Player_defense player_defense { get; private set; }
         public Player_die player_die { get; private set; }
+        public Player_skill1 player_Skill1 { get; private set; }
+        public Player_skill2 player_Skill2 { get; private set; }
 
 
         #endregion
@@ -79,12 +85,14 @@ namespace PPman
             player_dash = new Player_dash(this, stateMachine, "衝刺");
             player_defense = new Player_defense(this, stateMachine, "防禦");
             player_die = new Player_die(this, stateMachine, "死亡");
+            player_Skill1 = new Player_skill1(this, stateMachine, "技能1");
+            player_Skill2 = new Player_skill2(this, stateMachine, "技能2");
 
             //設定狀態機的"待機"為預設狀態
             stateMachine.DefaultState(player_idle);
             //獲取血條UI的WorktoUIpoint組件
             WorktoUIpointHP = GameObject.Find("群組_玩家血條").GetComponent<WorktoUIpoint>();
-            PlayerHP =GameObject.Find("群組_玩家血條").GetComponent<CanvasGroup>();
+            PlayerHP = GameObject.Find("群組_玩家血條").GetComponent<CanvasGroup>();
 
             imgHP = GameObject.Find("圖片_血條").GetComponent<Image>();
             imgHPeffect = GameObject.Find("圖片_血條_效果").GetComponent<Image>();
@@ -122,7 +130,8 @@ namespace PPman
         {
             base.Damage(damage);
             StartCoroutine(FadeSystem.Fade(PlayerHP)); // 開始血條淡入效果協程
-            CameraManager.Instance.StartShake(4,4, 0.2f); // 相機震動效果
+            CameraManager.Instance.StartShake(3, 4, 0.2f); // 相機震動效果
+            SoundManager.Instance.PlaySound(Soundtype.PlayerHurt, 0.8f, 1.5f); // 播放玩家受傷音效
         }
 
         protected override void Die()
@@ -130,7 +139,8 @@ namespace PPman
             base.Die();
             stateMachine.SwitchState(player_die); //切換到死亡狀態
             StartCoroutine(DelayfadeinBlack()); // 開始黑色背景淡入效果協程
-            CameraManager.Instance.StartShake(5, 5, 0.3f); // 相機震動效果
+            CameraManager.Instance.StartShake(4, 5, 0.3f); // 相機震動效果
+            SoundManager.Instance.PlaySound(Soundtype.PlayerDie); // 播放玩家死亡音效
         }
 
         private IEnumerator DelayfadeinBlack()
@@ -138,10 +148,24 @@ namespace PPman
             yield return new WaitForSeconds(1f); // 等待1秒
             StartCoroutine(FadeSystem.Fade(BlackImg)); // 開始黑色背景淡入效果協程
         }
+        public void ShootProjectile()
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
 
-      
+            // 根據角色面向方向決定子彈飛行方向
+            if (isFacingRight)
+            {
+                bulletScript.direction = Vector2.left;
+                bullet.transform.localScale = new Vector3(-1, 1, 1); // 子彈圖形也反轉
+            }
+            else
+            {
+                bulletScript.direction = Vector2.right;
+                bullet.transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
 
 
     }
-
 }

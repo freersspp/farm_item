@@ -141,6 +141,7 @@ namespace PPman
             base.Damage(damage);
             StartCoroutine(FadeSystem.Fade(groupHP));
             CameraManager.Instance.StartShake(0.8f, 8, 0.2f); // 相機震動效果
+            SoundManager.Instance.PlaySound(Soundtype.EnemyHurt); // 播放敵人受傷音效
         }
 
         protected override void Die()
@@ -150,6 +151,7 @@ namespace PPman
             StartCoroutine(DelayFadeOut()); // 延遲淡出血條
             CameraManager.Instance.StartShake(1.2f, 10, 0.5f);
             GetComponent<ItemDropper>()?.TryDrop(); // 嘗試掉落物品
+            SoundManager.Instance.PlaySound(Soundtype.EnemyDie); // 播放敵人死亡音效
         }
 
         private IEnumerator DelayFadeOut()

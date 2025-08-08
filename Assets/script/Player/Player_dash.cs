@@ -23,8 +23,7 @@ namespace PPman
 
             // 動畫或特效
             player.ani.SetTrigger("觸發衝刺");
-
-            
+            SoundManager.Instance.PlaySound(Soundtype.PlayerDash, 1, 1.2f); // 播放衝刺音效
 
             // 🔥 啟動火焰粒子效果
             if (player.dashFireTrail != null)
