@@ -154,6 +154,13 @@ namespace PPman
             SoundManager.Instance.PlaySound(Soundtype.EnemyDie); // 播放敵人死亡音效
         }
 
+        public void Respawn()
+        {
+            ani.SetTrigger("觸發重生"); // 觸發重生動畫
+            HP = HPMAX; // 重置生命值
+            stateMachine.SwitchState(enemy_idle); // 切換到待機狀態
+        }
+
         private IEnumerator DelayFadeOut()
         {
             yield return new WaitForSeconds(0.5f);

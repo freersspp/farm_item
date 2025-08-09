@@ -19,7 +19,7 @@ namespace PPman
                 Rigidbody2D rb = temp.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.velocity = new Vector2(Random.Range(-1.5f, 1.5f), 0.1f);
+                    rb.velocity = new Vector2(Random.Range(-1.2f, 1.2f), 0.1f);
                     SoundManager.Instance.PlaySound(Soundtype.DropItem, 0.8f, 1.5f);
                 }
             }

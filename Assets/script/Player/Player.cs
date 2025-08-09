@@ -166,6 +166,15 @@ namespace PPman
             }
         }
 
+        public void Heal(float amount)
+        {
+            HP += amount;
+            if (HP > HPMAX)
+                HP = HPMAX;
+            HPeffect(); // 更新血條UI
+        }
+
+
 
     }
 }

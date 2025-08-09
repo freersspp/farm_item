@@ -13,22 +13,32 @@ public class SwitchPlayer : Command
 
     private Dictionary<string, bool> activeChildStates = new Dictionary<string, bool>();
 
+    private void SwitchToPlayer(GameObject fromPlayer, GameObject toPlayer)
+    {
+        RecordActiveChildStates(fromPlayer);
+
+        fromPlayer.SetActive(false);
+        toPlayer.SetActive(true);
+        virtualCamera.Follow = toPlayer.transform;
+
+        ApplyChildStatesByName(toPlayer);
+    }
+
     public override void OnEnter()
     {
-        // 1. 先記錄目前主角啟用的子物件狀態（用名字來記）
-        GameObject currentPlayer = switchToB ? playerA : playerB;
-        RecordActiveChildStates(currentPlayer);
+        if (switchToB)
+        {
+            SwitchToPlayer(playerA, playerB);
+        }
+        else
+        {
+            // 繼續用A，不用改子物件狀態
+            playerA.SetActive(true);
+            playerB.SetActive(false);
+            virtualCamera.Follow = playerA.transform;
+        }
 
-        // 2. 切換主角控制權與攝影機
-        playerA.SetActive(!switchToB);
-        playerB.SetActive(switchToB);
-        virtualCamera.Follow = switchToB ? playerB.transform : playerA.transform;
-
-        // 3. 將相同名稱的子物件狀態套用到新的主角
-        GameObject newPlayer = switchToB ? playerB : playerA;
-        ApplyChildStatesByName(newPlayer);
-
-        Continue(); // Fungus 繼續執行
+        Continue();
     }
 
     private void RecordActiveChildStates(GameObject player)

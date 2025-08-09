@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 namespace PPman
@@ -17,7 +18,7 @@ namespace PPman
         protected float HP; // 當前生命值
         protected Image imgHP, imgHPeffect; // 生命值UI和效果
 
-
+        public event Action onDie; // 死亡事件
 
         protected virtual void Awake()
         {
@@ -89,7 +90,7 @@ namespace PPman
                 yield return new WaitForSeconds(0.04f); // 等待0.04秒
             }
         }
-        private void HPeffect()
+        protected virtual void HPeffect()
         {
             imgHP.fillAmount = HP / HPMAX; // 更新生命值UI
         }
@@ -99,6 +100,7 @@ namespace PPman
             Debug.Log($"<color=red> {name}死亡</color>");
             StartCoroutine(gameobjectinactive(gameObject, 1)); // 禁用物件
             SoundManager.Instance.PlaySound(Soundtype.PlayerDie); // 播放死亡音效
+            onDie?.Invoke(); // 觸發死亡事件
         }
 
 

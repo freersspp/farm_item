@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal.Profiling.Memory.Experimental;
+using UnityEngine;
 namespace PPman
 {
     /// <summary>
@@ -32,11 +33,15 @@ namespace PPman
 
             if (distance < eatDistance)
             {
+                GetItem();
                 Destroy(gameObject);
             }
 
         }
-
+        protected virtual void GetItem()
+        {
+            
+        }
 
     }
 }

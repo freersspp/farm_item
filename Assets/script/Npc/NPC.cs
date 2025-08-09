@@ -28,7 +28,7 @@ namespace PPman
         private Transform player; // 玩家物件
         private Transform npc;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             flowchart = GetComponent<Flowchart>();
             groupinteraction = GameObject.Find("群組_互動介面").GetComponent<CanvasGroup>();
@@ -44,7 +44,7 @@ namespace PPman
             // 設定預設狀態   
             stateMachine.DefaultState(Quest_before);
         }
-        private void Update()
+        protected virtual void Update()
         {
 #if UNITY_EDITOR
             Test();
@@ -110,6 +110,11 @@ namespace PPman
             transform.eulerAngles = new Vector3(0, 腳色角度, 0);
         }
 
+        public void GetItem()
+        {
+            手上任務物品數量++;
+            Debug.Log($"{name}手上任務物品數量: {手上任務物品數量}");
+        }
 
 #if UNITY_EDITOR
         private void Test()

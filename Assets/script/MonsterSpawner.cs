@@ -1,29 +1,71 @@
-﻿using UnityEngine;
+﻿using PPman;
+using UnityEngine;
 
-public class MonsterSpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
-    public GameObject monsterAPrefab;
-    public GameObject monsterBPrefab;
-
-    public Transform[] spawnPointsA; // 怪物A的出現點
-    public Transform[] spawnPointsB; // 怪物B的出現點
-
-    public int spawnCountA = 5;
-    public int spawnCountB = 5;
+    public GameObject[] enemyPrefab;
+    public Transform spawnPoint;
+    private float spawnTimer;
+    private float spawnEachTime = 3.5f;
+    [SerializeField, Header("場上怪物上限")] int currentEnemyCountMax = 4;
+    private int currentEnemyCount = 0;
+    private bool isRespawning = false;
 
     void Start()
     {
-        SpawnMonsters(monsterAPrefab, spawnPointsA, spawnCountA);
-        SpawnMonsters(monsterBPrefab, spawnPointsB, spawnCountB);
+        // 一開始一次補滿
+        FillEnemiesToMax();
     }
 
-    void SpawnMonsters(GameObject prefab, Transform[] points, int count)
+    void Update()
     {
-        for (int i = 0; i < count; i++)
+        if (isRespawning)
         {
-            int pointIndex = i % points.Length; // 循環選取生成點
-            Vector3 offset = new Vector3(Random.Range(-5f, 5f), 0F, 0f);
-            Instantiate(prefab, points[pointIndex].position + offset, Quaternion.identity);
+            spawnTimer += Time.deltaTime;
+
+            if (spawnTimer >= spawnEachTime)
+            {
+                spawnTimer = 0f;
+                SpawnEnemy();
+
+                // 補滿後停止補怪，等待下一次全部被殺光
+                if (currentEnemyCount >= currentEnemyCountMax)
+                {
+                    isRespawning = false;
+                }
+            }
+        }
+    }
+
+    void FillEnemiesToMax()
+    {
+        for (int i = 0; i < currentEnemyCountMax; i++)
+        {
+            SpawnEnemy();
+        }
+    }
+
+    void SpawnEnemy()
+    {
+        int randomEnemy = Random.Range(0, enemyPrefab.Length);
+        GameObject currentEnemy = Instantiate(enemyPrefab[randomEnemy], spawnPoint.position, Quaternion.identity);
+        currentEnemy.transform.localEulerAngles = new Vector3(0, Random.value >= 0.5f ? 180 : 0, 0);
+
+        Enemy enemyScript = currentEnemy.GetComponent<Enemy>();
+        enemyScript.onDie += OnEnemyDie;
+
+        currentEnemyCount++;
+    }
+
+    private void OnEnemyDie()
+    {
+        currentEnemyCount--;
+
+        // 當全部敵人被殺光時，開始補怪
+        if (currentEnemyCount == 0)
+        {
+            isRespawning = true;
+            spawnTimer = spawnEachTime; // 讓補怪馬上啟動
         }
     }
 }
