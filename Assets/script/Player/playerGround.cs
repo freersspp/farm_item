@@ -25,6 +25,8 @@ namespace PPman
         {
             base.Update();
 
+            player.ani.SetBool("是否在地板上", player.IsGround());
+
             //如果玩家在某些條件下 並且 按空白鍵就切換到"跳躍狀態"
             if (player.canjump && player.IsGround() && Input.GetKeyDown(KeyCode.Space))
             {

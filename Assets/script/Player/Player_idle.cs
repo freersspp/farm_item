@@ -14,7 +14,8 @@
             base.Enter();
 
             player.ani.SetFloat("移動", 0);
-            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeAll; //凍結旋轉
+            //player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeAll; 凍結旋轉
+            player.Setvelocity(player.transform.right * 0 + player.transform.up * player.rig.velocity.y);
             
         }
 
