@@ -18,6 +18,9 @@ namespace PPman
         [SerializeField, Tooltip("敵人血條UI預製物:群組敵人血條")] private GameObject enemyPrefabHP; // 群組敵人血條預製物
         private Transform groupEnemyHP;
 
+        [SerializeField] private GameObject damageTextPrefab; // 拖入 prefab
+        [SerializeField] private Transform canvasTransform;   // UI Canvas
+
         /// <summary>
         /// 檢測前方有無牆壁和地上有無地板
         /// </summary>
@@ -138,7 +141,37 @@ namespace PPman
 
         protected override void Damage(float damage)
         {
+
             base.Damage(damage);
+
+            // ✅ 確保有 Canvas
+            if (canvasTransform == null)
+            {
+                GameObject canvasObj = GameObject.Find("畫布_主要介面");
+                if (canvasObj != null)
+                {
+                    canvasTransform = canvasObj.transform;
+                }
+            }
+
+            // ✅ 生成傷害數字
+            if (damageTextPrefab && canvasTransform)
+            {
+                // 把世界座標轉成螢幕座標（敵人頭上）
+                Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 2);
+
+                // 生成 Prefab 並設定到 Canvas 底下
+                GameObject dmgTextObj = Instantiate(damageTextPrefab, canvasTransform);
+                dmgTextObj.transform.position = screenPos;
+
+                // 設定文字內容
+                var dmgText = dmgTextObj.GetComponent<DamageText>();
+                if (dmgText != null)
+                {
+                    dmgText.Setup(Mathf.RoundToInt(damage));
+                }
+            }
+
             StartCoroutine(FadeSystem.Fade(groupHP));
             CameraManager.Instance.StartShake(0.8f, 8, 0.2f); // 相機震動效果
             SoundManager.Instance.PlaySound(Soundtype.EnemyHurt); // 播放敵人受傷音效
