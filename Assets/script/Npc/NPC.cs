@@ -114,7 +114,14 @@ namespace PPman
         {
             手上任務物品數量++;
             Debug.Log($"{name}手上任務物品數量: {手上任務物品數量}");
+
+            // 顯示 UI 提示
+            if (QuestUIManager.Instance != null)
+            {
+                QuestUIManager.Instance.ShowMessage($"已獲得 {手上任務物品數量} 個任務道具");
+            }
         }
+
 
 #if UNITY_EDITOR
         private void Test()

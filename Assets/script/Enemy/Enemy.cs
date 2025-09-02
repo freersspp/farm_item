@@ -144,7 +144,7 @@ namespace PPman
 
             base.Damage(damage);
 
-            // ✅ 確保有 Canvas
+            //  確保有 Canvas
             if (canvasTransform == null)
             {
                 GameObject canvasObj = GameObject.Find("畫布_主要介面");
@@ -154,7 +154,7 @@ namespace PPman
                 }
             }
 
-            // ✅ 生成傷害數字
+            //  生成傷害數字
             if (damageTextPrefab && canvasTransform)
             {
                 // 把世界座標轉成螢幕座標（敵人頭上）
@@ -182,6 +182,7 @@ namespace PPman
             base.Die();
             stateMachine.SwitchState(enemy_die); // 切換到死亡狀態
             StartCoroutine(DelayFadeOut()); // 延遲淡出血條
+            StartCoroutine(gameobjectinactive(gameObject, 1)); // 禁用物件
             CameraManager.Instance.StartShake(1.2f, 10, 0.5f);
             GetComponent<ItemDropper>()?.TryDrop(); // 嘗試掉落物品
             SoundManager.Instance.PlaySound(Soundtype.EnemyDie); // 播放敵人死亡音效
@@ -199,7 +200,13 @@ namespace PPman
             yield return new WaitForSeconds(0.5f);
             StartCoroutine(FadeSystem.Fade(groupHP, false)); // 淡出血條
         }
-        
+
+        private IEnumerator gameobjectinactive(GameObject obj, float time)
+        {
+            yield return new WaitForSeconds(1); // 等待指定時間
+            obj.SetActive(false); // 禁用物件
+        }
+
 
     }
 }

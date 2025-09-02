@@ -125,16 +125,7 @@ namespace PPman
             canjump = cancontrol;
             canattack = cancontrol;
         }
-
-        protected override void Damage(float damage)
-        {
-            base.Damage(damage);
-            StartCoroutine(FadeSystem.Fade(PlayerHP)); // 開始血條淡入效果協程
-            CameraManager.Instance.StartShake(3, 4, 0.2f); // 相機震動效果
-            SoundManager.Instance.PlaySound(Soundtype.PlayerHurt, 0.8f, 1.5f); // 播放玩家受傷音效
-        }
-
-        protected override void Die()
+protected override void Die()
         {
             base.Die();
             stateMachine.SwitchState(player_die); //切換到死亡狀態
@@ -145,9 +136,19 @@ namespace PPman
 
         private IEnumerator DelayfadeinBlack()
         {
-            yield return new WaitForSeconds(1f); // 等待1秒
+            yield return new WaitForSeconds(1); // 等待1秒
             StartCoroutine(FadeSystem.Fade(BlackImg)); // 開始黑色背景淡入效果協程
         }
+
+        protected override void Damage(float damage)
+        {
+            base.Damage(damage);
+            StartCoroutine(FadeSystem.Fade(PlayerHP)); // 開始血條淡入效果協程
+            CameraManager.Instance.StartShake(3, 4, 0.2f); // 相機震動效果
+            SoundManager.Instance.PlaySound(Soundtype.PlayerHurt, 0.8f, 1.5f); // 播放玩家受傷音效
+        }
+
+        
         public void ShootProjectile()
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

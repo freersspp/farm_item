@@ -98,7 +98,7 @@ namespace PPman
         protected virtual void Die()
         {
             Debug.Log($"<color=red> {name}死亡</color>");
-            StartCoroutine(gameobjectinactive(gameObject, 1)); // 禁用物件
+            //StartCoroutine(gameobjectinactive(gameObject, 1)); // 禁用物件
             SoundManager.Instance.PlaySound(Soundtype.PlayerDie); // 播放死亡音效
             onDie?.Invoke(); // 觸發死亡事件
         }
