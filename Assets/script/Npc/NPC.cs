@@ -1,4 +1,5 @@
 ﻿using Fungus;
+using ppman;
 using System.Collections;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace PPman
 
         public bool playerinarea { get; private set; }
         public bool TalkingorNot { get; set; }
-        public int 手上任務物品數量 { get; set; } // 玩家手上任務物品數量
+        public int 手上任務物品數量 { get; protected set; } // 玩家手上任務物品數量
         public int 任務物品需要數量 { get; set; } = 5; // 任務物品需要數量
 
         [SerializeField] private Vector3 offsetinteraction; // 互動介面偏移量
@@ -33,7 +34,7 @@ namespace PPman
             flowchart = GetComponent<Flowchart>();
             groupinteraction = GameObject.Find("群組_互動介面").GetComponent<CanvasGroup>();
             worktoUIpoint = GameObject.Find("群組_互動介面").GetComponent<WorktoUIpoint>();
-            player = GameObject.Find("主角").transform; // 獲取玩家物件
+            player = GameObject.Find(GameManager.PlayerName).transform; // 獲取玩家物件
             npc = GameObject.Find("NPC").transform; // 獲取NPC物件
 
             // 初始化狀態機

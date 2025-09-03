@@ -7,7 +7,7 @@ namespace PPman
     /// <summary>
     /// 腳色:翻面和加速度或者腳色共同功能
     /// </summary>
-    public class character : MonoBehaviour
+    public class Character : MonoBehaviour
     {
         // {get; private set;}唯獨屬性:允許外部取得但不能修改
         public Animator ani { get; private set; }
@@ -93,6 +93,7 @@ namespace PPman
         protected virtual void HPeffect()
         {
             imgHP.fillAmount = HP / HPMAX; // 更新生命值UI
+            imgHPeffect.fillAmount = HP / HPMAX; // 更新生命值UI效果
         }
 
         protected virtual void Die()

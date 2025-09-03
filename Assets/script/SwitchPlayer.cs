@@ -3,7 +3,7 @@ using Fungus;
 using Cinemachine;
 using System.Collections.Generic;
 
-[CommandInfo("Custom", "Switch Player", "切換主角控制權和攝影機目標，並同步同名子物件的啟用狀態")]
+[CommandInfo("Custom", "Switch Player", "切換GameManager.PlayerName控制權和攝影機目標，並同步同名子物件的啟用狀態")]
 public class SwitchPlayer : Command
 {
     public GameObject playerA;

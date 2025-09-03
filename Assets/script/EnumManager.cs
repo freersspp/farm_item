@@ -5,9 +5,9 @@ namespace PPman
     //enum列舉 : 下拉選單(預設是單選)
     //快速鍵 enum + Tab 兩下
     /// <summary>
-    /// 主角受傷音效
-    /// 主角死亡音效
-    /// 主角衝刺音效
+    /// GameManager.PlayerName受傷音效
+    /// GameManager.PlayerName死亡音效
+    /// GameManager.PlayerName衝刺音效
     /// 劍氣音效
     /// 吃道具音效
     /// 掉落道具音效
@@ -23,9 +23,9 @@ namespace PPman
     /// </summary>
     public enum Soundtype
     {
-        PlayerHurt, //主角受傷音效
-        PlayerDie, //主角死亡音效
-        PlayerDash, //主角衝刺音效
+        PlayerHurt, //GameManager.PlayerName受傷音效
+        PlayerDie, //GameManager.PlayerName死亡音效
+        PlayerDash, //GameManager.PlayerName衝刺音效
         skill2, //劍氣音效
         EatItem, //吃道具音效        
         DropItem, //掉落道具音效

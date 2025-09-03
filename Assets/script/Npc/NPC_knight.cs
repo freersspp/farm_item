@@ -16,5 +16,12 @@ namespace PPman
                 return _instance;
             }
         }
+
+        public  void LoadCount(int count)
+        {
+            手上任務物品數量 = count;
+        }
+
+        
     }
 }

@@ -12,7 +12,7 @@ namespace PPman
         {
             base.Enter();
             player.ani.SetTrigger("觸發死亡");
-            player.Setvelocity(Vector3.right * 0 + Vector3.up * player.rig.velocity.y); //設定主角死後不會亂動
+            player.Setvelocity(Vector3.right * 0 + Vector3.up * player.rig.velocity.y); //設定GameManager.PlayerName死後不會亂動
         }
 
         public override void Exit()

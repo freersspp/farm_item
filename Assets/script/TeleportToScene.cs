@@ -7,7 +7,7 @@ public class TeleportToScene : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // 確保只有主角觸發
+        if (other.CompareTag("Player")) // 確保只有GameManager.PlayerName觸發
         {
             SceneManager.LoadScene(sceneName);
         }

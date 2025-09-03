@@ -20,8 +20,8 @@ namespace PPman
 
         [SerializeField, Header("所有音效")]private AudioClip[] allsound;
         /// <summary>
-        /// 主角受傷音效
-        /// 主角死亡音效
+        /// GameManager.PlayerName受傷音效
+        /// GameManager.PlayerName死亡音效
         /// 劍氣音效
         /// 吃道具音效
         /// 怪物受傷音效

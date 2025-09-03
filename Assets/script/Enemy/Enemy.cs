@@ -6,7 +6,7 @@ namespace PPman
     /// <summary>
     /// 敵人腳本:管理敵人資料與行為
     /// </summary>
-    public class Enemy : character
+    public class Enemy : Character
     {
         [field: SerializeField]public Vector2 idleTime { get; private set; }
         [field: SerializeField] public Vector2 WalkTime { get; private set; }

@@ -6,7 +6,7 @@ namespace PPman
     /// <summary>
     /// 儲存玩家資料與基本功能
     /// </summary>
-    public class Player : character
+    public class Player : Character
     {
         #region 變數
         [field: Header("基本控制")]
@@ -42,6 +42,10 @@ namespace PPman
         public GameObject dashFireTrail;
 
         #endregion
+
+        // => 只能讓外部讀取, 不能修改
+        public float HPmaxdata => HPMAX; // 用於外部獲取最大生命值
+        public float HPdata => HP; // 用於外部獲取當前生命值
 
         #region 狀態資料
         public StateMachine stateMachine { get; private set; }
@@ -132,12 +136,23 @@ protected override void Die()
             StartCoroutine(DelayfadeinBlack()); // 開始黑色背景淡入效果協程
             CameraManager.Instance.StartShake(4, 5, 0.3f); // 相機震動效果
             SoundManager.Instance.PlaySound(Soundtype.PlayerDie); // 播放玩家死亡音效
+            StartCoroutine(LoadPlayerData()); // 開始載入玩家資料協程
         }
 
         private IEnumerator DelayfadeinBlack()
         {
             yield return new WaitForSeconds(1); // 等待1秒
             StartCoroutine(FadeSystem.Fade(BlackImg)); // 開始黑色背景淡入效果協程
+        }
+
+        private IEnumerator LoadPlayerData()
+        {
+            yield return new WaitForSeconds(1.5f); // 等待1.5秒
+            SaveLoadsystem.instance.Loaddata(); // 載入玩家資料
+            StartCoroutine(FadeSystem.Fade(BlackImg, false)); // 開始黑色背景淡出效果協程
+            canmove = true;
+            canjump = true;
+            canattack = true;
         }
 
         protected override void Damage(float damage)
@@ -148,6 +163,17 @@ protected override void Die()
             SoundManager.Instance.PlaySound(Soundtype.PlayerHurt, 0.8f, 1.5f); // 播放玩家受傷音效
         }
 
+        /// <summary>
+        /// 載入血量並更新UI
+        /// </summary>
+        /// <param name="_hpmax">血量最大值</param>
+        /// <param name="_hp">當前血量</param>
+        public void LoadHPUpdateUI(float _hpmax, float _hp)
+        {
+            HPMAX = _hpmax;
+            HP = _hp;
+            HPeffect(); // 更新血條UI
+        }
         
         public void ShootProjectile()
         {
