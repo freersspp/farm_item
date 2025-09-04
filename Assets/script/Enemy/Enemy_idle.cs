@@ -16,10 +16,9 @@ namespace PPman
         {
             base.Enter();
             idleTime = Random.Range(enemy.idleTime.x, enemy.idleTime.y); // 隨機閒置時間
-            //Debug.Log($"<color=blue>待機時間:<{idleTime}></color>");
-
             enemy.Setvelocity(Vector3.zero); // 設定敵人移動速度為0
             enemy.ani.SetFloat("移動", 0); // 設定動畫參數為閒置狀態
+            enemy.Setvelocity(enemy.transform.right * 0 + enemy.transform.up * enemy.rig.velocity.y);
         }
 
         public override void Exit()

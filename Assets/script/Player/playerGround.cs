@@ -47,6 +47,11 @@ namespace PPman
             {
                 stateMachine.SwitchState(player.player_defense);
             }
+            //如果玩家在地面上並且按下Q鍵就切換到"技能1狀態"
+            if (player.canskill1 && player.IsGround() && Input.GetKeyDown(KeyCode.Q))
+            {
+                stateMachine.SwitchState(player.player_Skill1);
+            }
             //如果玩家在地面上並且按下E鍵就切換到"技能2狀態"
             if (player.canskill2 && player.IsGround() && Input.GetKeyDown(KeyCode.E))
             {

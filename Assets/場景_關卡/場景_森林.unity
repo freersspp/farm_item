@@ -50853,6 +50853,97 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1075105500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075105501}
+  - component: {fileID: 1075105502}
+  - component: {fileID: 1075105503}
+  m_Layer: 6
+  m_Name: "\u6280\u80FD1\u7BC4\u570D"
+  m_TagString: "\u653B\u64CA\u5340\u57DF\u73A9\u5BB6"
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1075105501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075105500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6046731525178828243}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1075105502
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075105500}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -3, y: 0.6}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1075105503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075105500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18eafa74f19f62f4cbb933f91a02a154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <attackPower>k__BackingField: 20
 --- !u!1 &1082318771
 GameObject:
   m_ObjectHideFlags: 3
@@ -56836,6 +56927,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4701899040799972353, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1563503642}
+    - targetCorrespondingSourceObject: {fileID: 4701899040799972353, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1563503645}
   m_SourcePrefab: {fileID: 100100000, guid: e5d2cfb75d67eae40a10042cc11570bb, type: 3}
 --- !u!4 &1563503630 stripped
 Transform:
@@ -56927,10 +57021,8 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  selectedBlocks:
-  - {fileID: 1563503637}
-  selectedCommands:
-  - {fileID: 1563503640}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -56969,6 +57061,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 1563503643}
   - {fileID: 1563503640}
+  - {fileID: 1563503645}
   - {fileID: 1563503642}
   suppressAllAutoSelections: 0
 --- !u!114 &1563503639
@@ -57036,6 +57129,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3809008096464210913}
         m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
         m_MethodName: SwitchControl
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3809008096464210913}
+        m_TargetAssemblyTypeName: PPman.Player, Assembly-CSharp
+        m_MethodName: set_canskill1
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -57125,6 +57230,34 @@ MonoBehaviour:
   stringEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1563503645
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210382653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 4
+  indentLevel: 0
+  storyText: "\u5594!\u5C0D\u4E86!{b}{color=blue}Q(\u6280\u80FD:\u7A81\u64CA){/color}{/b}\u555F\u52D5\u4E86,
+    \u8A66\u8A66\u770B\u5427!"
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1001 &1588441167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63448,7 +63581,7 @@ MonoBehaviour:
   scrollPos: {x: 0, y: 0}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 400
+  blockViewHeight: 630
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -63459,7 +63592,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1945760153}
   selectedCommands:
-  - {fileID: 1945760157}
+  - {fileID: 1945760160}
   variables: []
   description: 
   stepPause: 0
@@ -65872,7 +66005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 742053792}
+  selectedFlowchart: {fileID: 1563503636}
 --- !u!4 &2107871065
 Transform:
   m_ObjectHideFlags: 1
@@ -90659,6 +90792,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1004362197077202992, guid: 9d93fee3890ef324082cfcd4121d8c54, type: 3}
   firePoint: {fileID: 657586100}
   bulletSpeed: 50
+  <Skill1time>k__BackingField: 0
   <Skill2time>k__BackingField: 0.385
   "\u78BA\u8A8D\u5730\u677F\u5C3A\u5BF8": {x: 0.75, y: 0.25, z: 1}
   "\u78BA\u8A8D\u5730\u677F\u5C3A\u5BF8\u7684\u4F4D\u7F6E": {x: 0, y: -0.05, z: 0}
@@ -91276,6 +91410,7 @@ Transform:
   - {fileID: 798068792543885174}
   - {fileID: 3813341914766549270}
   - {fileID: 657586100}
+  - {fileID: 1075105501}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91418,6 +91553,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3758337070598787875, guid: bc640f69ee8748448b89250874145a4b, type: 3}
   firePoint: {fileID: 1283032482}
   bulletSpeed: 10
+  <Skill1time>k__BackingField: 0
   <Skill2time>k__BackingField: 0.385
   "\u78BA\u8A8D\u5730\u677F\u5C3A\u5BF8": {x: 0.75, y: 0.25, z: 1}
   "\u78BA\u8A8D\u5730\u677F\u5C3A\u5BF8\u7684\u4F4D\u7F6E": {x: 0, y: -0.05, z: 0}

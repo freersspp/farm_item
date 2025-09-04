@@ -20,7 +20,8 @@ namespace PPman
         [field: SerializeField] public GameObject bulletPrefab; //子彈預製體
         [field: SerializeField] public Transform firePoint; //發射位置
         [field: SerializeField] public float bulletSpeed = 10f; //子彈速度
-        [field:SerializeField] public float Skill2time { get; private set; } 
+        [field: SerializeField] public float Skill1time { get; private set; }
+        [field: SerializeField] public float Skill2time { get; private set; }
 
 
 
@@ -30,6 +31,7 @@ namespace PPman
         public bool canattack { get; set; } = false; //是否可以攻擊 
         public bool candash { get; set; } = false; //是否可以衝刺
         public bool candefense { get; set; } = false; //是否可以防禦
+        public bool canskill1 { get; set; } = false; //是否可以使用技能1
         public bool canskill2 { get; set; } = false; //是否可以使用技能2
 
 
@@ -129,7 +131,7 @@ namespace PPman
             canjump = cancontrol;
             canattack = cancontrol;
         }
-protected override void Die()
+        protected override void Die()
         {
             base.Die();
             stateMachine.SwitchState(player_die); //切換到死亡狀態
@@ -150,9 +152,13 @@ protected override void Die()
             yield return new WaitForSeconds(1.5f); // 等待1.5秒
             SaveLoadsystem.instance.Loaddata(); // 載入玩家資料
             StartCoroutine(FadeSystem.Fade(BlackImg, false)); // 開始黑色背景淡出效果協程
-            canmove = true;
-            canjump = true;
-            canattack = true;
+            Relife(); // 重生
+        }
+
+        private void Relife()
+        {
+            ani.SetTrigger("觸發重生");
+            stateMachine.SwitchState(player_idle); //切換到待機狀態
         }
 
         protected override void Damage(float damage)
@@ -174,7 +180,7 @@ protected override void Die()
             HP = _hp;
             HPeffect(); // 更新血條UI
         }
-        
+
         public void ShootProjectile()
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -200,6 +206,8 @@ protected override void Die()
                 HP = HPMAX;
             HPeffect(); // 更新血條UI
         }
+
+
 
 
 

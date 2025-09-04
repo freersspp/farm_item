@@ -4,7 +4,7 @@ namespace PPman
     public class ItemDropper : MonoBehaviour
     {
         [Header("掉落設定")]
-        [SerializeField, Range(0, 1)] private float dropRate = 1f;
+        [SerializeField, Range(0, 1)] private float dropRate = 0.8f;
         [SerializeField] private GameObject[] dropItems;
 
         public void TryDrop()
